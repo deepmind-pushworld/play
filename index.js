@@ -1,5 +1,7 @@
-
-// Pushworld rendering params
+// Github settings
+github_repo = "xloudm/pushworldtest"
+file_source = "https://raw.githubusercontent.com/" + github_repo + "/main/"
+repo_contents = "https://api.github.com/repos/" + github_repo + "/contents/"
 
 colors = {
     SELF: "#00DC00",
@@ -15,11 +17,6 @@ colors = {
     WALL: "#0A0A0A",
     WALL_BORDER: "#050505",
 }
-
-github_repo = "xloudm/pushworldtest"
-file_source = "https://raw.githubusercontent.com/" + github_repo + "/main/"
-repo_contents = "https://api.github.com/repos/" + github_repo + "/contents/"
-
 
 function convertFileToPushworld(filedump) {
     var lines = filedump.split("\n").map(line => line.trim()).filter(line => line)
@@ -492,17 +489,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $(".pushworld_puzzles .preview_panel").each(function(){
         var preview_panel = $(this);
-        // var puzzle_dir = preview_panel.attr("puzzle_source");
 
-        // pushworld_filenames = fs.readdirSync(puzzle_dir).filter(f => f.endsWith('.pwp'));
-        // pushworld_filenames = [].concat(pushworld_filenames);
-        // pushworld_filenames.sort();
+        $.getJSON(
+            repo_contents + "problems/" + preview_panel.attr("puzzle_group"),
+            function(result) {
+                var pushworlds = [];
 
-        // pushworlds = pushworld_filenames.map(f =>
-        //     convertFileToPushworld(fs.readFileSync(puzzle_dir.concat('/', f), 'utf8'))
-        // );
-        pushworlds = [convertFileToPushworld(demo_puzzle)];
-        display_puzzles(pushworlds, preview_panel);
+                for (file_info of result) {
+                    $.ajax({
+                        async: false,
+                        type: 'GET',
+                        url: file_info['download_url'],
+                        success: function(puzzle_string) {
+                            pushworlds.push(convertFileToPushworld(puzzle_string));
+                        }
+                    });
+                }
+                display_puzzles(pushworlds, preview_panel);
+            }
+        )
     });
 
     $('.pushworld_puzzles .all_puzzles').click(() => {
@@ -616,29 +621,3 @@ function display_puzzles(pushworlds, preview_panel)
         });
     }
 };
-
-var demo_puzzle = `Push World Puzzle
------------------
-Name: Escape The Room
- .  .  .  .  .  .  .  .  .  .  .  .  .
- .  .  .  .  .  .  .  .  .  .  .  .  .
-M0 M0  .  .  .  .  .  .  .  .  .  .  .
-M0  .  .  .  .  .  .  .  .  .  .  .  .
-M0  .  .  .  .  .  .  .  .  . M1  .  .
-M0  .  .  .  .  .  .  .  .  . M1 M1  .
-M0 M0  .  .  .  .  .  .  .  . M1 M1  .
- .  .  .  .  .  S  S  .  .  . M1  .  .
- .  .  .  .  .  S  S  .  .  .  .  .  .
- .  .  .  .  .  .  .  .  .  .  .  .  .
- .  .  .  .  .  .  .  .  .  .  .  .  .
- .  .  .  .  .  .  .  .  .  .  .  .  .
- .  . M2 M2  .  .  .  .  .  .  .  .  .
- .  . M2  .  .  .  .  .  .  .  .  .  .
-M2 M2 M2  .  .  . M3  .  .  .  .  .  .
- .  . M2 M4 M4  .  .  . M4 M4  .  .  .
- .  . M2  . M4 M4 M4 M4 M4  .  .  .  .
- W  W  W  W  W  W  .  W  W  W  W  W  W
- .  .  .  .  .  .  .  .  .  .  .  .  .
- .  .  .  .  .  . G3  .  .  .  .  .  .
- .  .  .  .  .  .  .  .  .  .  .  .  .
-`;
