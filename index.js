@@ -16,6 +16,10 @@ colors = {
     WALL_BORDER: "#050505",
 }
 
+github_repo = "xloudm/pushworldtest"
+file_source = "https://raw.githubusercontent.com/" + github_repo + "/main/"
+repo_contents = "https://api.github.com/repos/" + github_repo + "/contents/"
+
 
 function convertFileToPushworld(filedump) {
     var lines = filedump.split("\n").map(line => line.trim()).filter(line => line)

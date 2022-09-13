@@ -1,0 +1,14 @@
+Push World Puzzle
+-----------------
+Name: 2 Obstacle
+ . SW SW SW SW SW SW SW SW SW SW
+ . SW SW SW SW SW SW SW SW SW SW
+ .  .  .  .  .  .  .  .  .  .  .
+ .  .  M0 M0 .  .  .  .  .  .  .
+ .  .  M0 M0 .  .  .  .  .  .  .
+ .  .  .  .  . G0 G0  .  .  .  .
+ .  .  .  .  .  G0 G0+M1 M1 M1 M1 M1
+ .  .  .  .  .  .  .  .  .  .  M1
+ .  .  S  .  .  .  M1 M1 M1 M1 M1
+ .  .  .  .  .  .  M1 .  .  .  .
+ .  .  .  .  .  .  M1 M1 M1 M1 M1
