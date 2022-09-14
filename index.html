@@ -1,175 +1,364 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Push World</title>
 
-    <!- https://electronjs.org/docs/tutorial/security#csp-meta-tag ->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+<head>
+  <meta charset="UTF-8">
+  <title>Push World</title>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="photon.min.css">
-    <link rel="stylesheet" href="style.css">
+  <!- https://electronjs.org/docs/tutorial/security#csp-meta-tag ->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 
-    <!-- Javascript -->
-    <script src="jquery-3.6.0.min.js" charset="utf-8"></script>
-    <script src="index.js" charset="utf-8"></script>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="photon.min.css">
+  <link rel="stylesheet" href="style.css">
 
-  </head>
-  <body>
+  <!-- Javascript -->
+  <script src="jquery-3.6.0.min.js" charset="utf-8"></script>
+  <script src="index.js" charset="utf-8"></script>
 
-    <div class="pushworld_puzzles">
-      <div class="select_puzzle_group">
-        <div class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <div class="left-buttons"></div>
-            <div class="title vcenter">Select a Puzzle Difficulty</div>
-          </div>
-        </div>
-        <div style="height:520px; background-color: #f6f6f6; padding-top:125px;">
-          <div style="text-align: center;">
-            <div><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level1">Level 1</div></div>
-            <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level2">Level 2</div></div>
-            <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level3">Level 3</div></div>
-            <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level4">Level 4</div></div>
-          </div>
-        </div>
-      </div>
+  <style>
+  html {
+      margin:    0 auto;
+      max-width: 720px;
+  }
+  </style>
 
-      <div class="preview_panel" puzzle_group="level1" style="display:none;">
+</head>
 
-        <div class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <div class="left-buttons">
-              <button class="return_select_puzzle_group btn btn-large btn-default">
-                <span class="icon icon-home icon-text"></span>
-                Select Difficulty
-              </button>
-            </div>
-            <div class="title vcenter">Level 1 Puzzles</div>
-          </div>
-        </div>
+<body>
 
-        <div class="previews">
-          <div id="pw-preview-template" class="pushworld_preview">
-            <canvas class="vcenter" height="120px" width="120px"></canvas>
-          </div>
-        </div>
-      </div>
 
-      <div class="preview_panel" puzzle_group="level2" style="display:none;">
+<div>
+<p style="text-align: center;"><strong>Push World: A benchmark for planning with physical tools and obstacles</strong></p>
+<p style="text-align: center;">First Author, Second Author, Third Author, Fourth Author, &hellip;</p>
+<p style="text-align: center;"><sup>1</sup>DeepMind</p>
+<p style="text-align: center;"><sup>2</sup>Intrinsic AI</p>
+<p style="text-align: center;">pushworld@deepmind.com</p>
+<p style="text-align: center;">https://arxiv.org/abs/8495.19481</p>
+</div>
 
-        <div class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <div class="left-buttons">
-              <button class="return_select_puzzle_group btn btn-large btn-default">
-                <span class="icon icon-home icon-text"></span>
-                Select Difficulty
-              </button>
-            </div>
-            <div class="title vcenter">Level 2 Puzzles</div>
-          </div>
-        </div>
 
-        <div class="previews">
-          <div id="pw-preview-template" class="pushworld_preview">
-            <canvas class="vcenter" height="120px" width="120px"></canvas>
-          </div>
-        </div>
-      </div>
 
-      <div class="preview_panel" puzzle_group="level3" style="display:none;">
+<div style="width: 100%; margin-top: 32px; float: left;">
+<div style="width: 50%; height: auto; float: left;">
+  <strong>About Push World</strong>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Push World is a novel grid-world environment with physical tools and obstacles for reasoning and planning.</span></li>
+  </ul>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Challenges in Push World</span></li>
+  <ul>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Complex Object Shape</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Path planning</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Manipulation planning</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Movable Obstacles</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Tool use</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Multiple goals</span></li>
+  </ul>
+  </ul>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Push World is available as a Gym environment and in PDDL format.</span></li>
+  </ul>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Push World is suitable for</span></li>
+  <ul>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">classic planning research</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">deep reinforcement learning research</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">combined task and motion planning research</span></li>
+  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">cognitive science research</span></li>
+  </ul>
+  </ul>
+</div>
+<div style="margin-left: 50%; height: auto;">
+  <img src="images/pushworld-preview.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
+</div>
+</div>
 
-        <div class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <div class="left-buttons">
-              <button class="return_select_puzzle_group btn btn-large btn-default">
-                <span class="icon icon-home icon-text"></span>
-                Select Difficulty
-              </button>
-            </div>
-            <div class="title vcenter">Level 3 Puzzles</div>
-          </div>
-        </div>
 
-        <div class="previews">
-          <div id="pw-preview-template" class="pushworld_preview">
-            <canvas class="vcenter" height="120px" width="120px"></canvas>
-          </div>
-        </div>
-      </div>
 
-      <div class="preview_panel" puzzle_group="level4" style="display:none;">
+<div style="width: 100%; margin-top: 32px; float: left;">
+<div style="width: 33.3%; height: auto; float: left;">
+  <strong>Push World Vs Related Environments</strong>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Push World raises many challenges that only partially exist in other similar environments such as Sokoban.</span></li>
+  </ul>
+</div>
+<div style="margin-left: 33.3%; height: auto;">
+  <img src="images/pushworld-related.png" alt="PushWorld Sample Puzzles" width="600" height="auto" />
+</div>
+</div>
 
-        <div class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <div class="left-buttons">
-              <button class="return_select_puzzle_group btn btn-large btn-default">
-                <span class="icon icon-home icon-text"></span>
-                Select Difficulty
-              </button>
-            </div>
-            <div class="title vcenter">Level 4 Puzzles</div>
-          </div>
-        </div>
 
-        <div class="previews">
-          <div id="pw-preview-template" class="pushworld_preview">
-            <canvas class="vcenter" height="120px" width="120px"></canvas>
-          </div>
+
+<div style="width: 100%; margin-top: 32px; float: left;">
+  <p style="text-align: left;"><strong>Play Push World</strong></p>
+
+  <div class="pushworld_puzzles">
+    <div class="select_puzzle_group">
+      <div class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <div class="left-buttons"></div>
+          <div class="title vcenter">Select a Puzzle Difficulty</div>
         </div>
       </div>
-
-      <div class="puzzle_panel">
-        <div class="toolbar toolbar-header">
-          <div class="toolbar-actions">
-            <div class="left-buttons">
-              <button class="all_puzzles btn btn-large btn-default">
-                <span class="icon icon-home icon-text"></span>
-                Puzzle List
-              </button>
-            </div>
-            <div class="title vcenter">Puzzle name</div>
-            <div class="right-buttons">
-              <button class="reset_button btn btn-large btn-default pull-right">
-                <span class="icon icon-fast-backward icon-text"></span>
-                Reset
-              </button>
-
-              <button class="undo_button btn btn-large btn-default pull-right">
-                <span class="icon icon-left icon-text"></span>
-                Undo
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="puzzle">
-          <div id="instructions_modal" class="modal" style="display:block;">
-            <div class="modal-content">
-              <div class="arrow-keys">
-                <div class="key hidden"></div>
-                <div class="key"><span class="icon icon-up-bold"></span></div>
-                <div class="key hidden"></div>
-                <div class="key"><span class="icon icon-left-bold"></span></div>
-                <div class="key"><span class="icon icon-down-bold"></span></div>
-                <div class="key"><span class="icon icon-right-bold"></span></div>
-              </div>
-              <div class="text">Use the arrow keys to push the <a>red shapes</a> into their outlines.</div>
-              <button type="submit" class="btn btn-form btn-large btn-primary">OK, got it!</button>
-            </div>
-          </div>
-
-          <div id="solved_modal" class="modal">
-            <div class="modal-content">
-              Solved!
-            </div>
-          </div>
-
-          <canvas id="play_canvas" height="500px" width="728px"></canvas>
+      <div style="height:520px; background-color: #f6f6f6; padding-top:125px;">
+        <div style="text-align: center;">
+          <div><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level1">Level 1</div></div>
+          <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level2">Level 2</div></div>
+          <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level3">Level 3</div></div>
+          <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level4">Level 4</div></div>
         </div>
       </div>
     </div>
 
-  </body>
+    <div class="preview_panel" puzzle_group="level1" style="display:none;">
+
+      <div class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <div class="left-buttons">
+            <button class="return_select_puzzle_group btn btn-large btn-default">
+              <span class="icon icon-home icon-text"></span>
+              Select Difficulty
+            </button>
+          </div>
+          <div class="title vcenter">Level 1 Puzzles</div>
+        </div>
+      </div>
+
+      <div class="previews">
+        <div id="pw-preview-template" class="pushworld_preview">
+          <canvas class="vcenter" height="120px" width="120px"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview_panel" puzzle_group="level2" style="display:none;">
+
+      <div class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <div class="left-buttons">
+            <button class="return_select_puzzle_group btn btn-large btn-default">
+              <span class="icon icon-home icon-text"></span>
+              Select Difficulty
+            </button>
+          </div>
+          <div class="title vcenter">Level 2 Puzzles</div>
+        </div>
+      </div>
+
+      <div class="previews">
+        <div id="pw-preview-template" class="pushworld_preview">
+          <canvas class="vcenter" height="120px" width="120px"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview_panel" puzzle_group="level3" style="display:none;">
+
+      <div class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <div class="left-buttons">
+            <button class="return_select_puzzle_group btn btn-large btn-default">
+              <span class="icon icon-home icon-text"></span>
+              Select Difficulty
+            </button>
+          </div>
+          <div class="title vcenter">Level 3 Puzzles</div>
+        </div>
+      </div>
+
+      <div class="previews">
+        <div id="pw-preview-template" class="pushworld_preview">
+          <canvas class="vcenter" height="120px" width="120px"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview_panel" puzzle_group="level4" style="display:none;">
+
+      <div class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <div class="left-buttons">
+            <button class="return_select_puzzle_group btn btn-large btn-default">
+              <span class="icon icon-home icon-text"></span>
+              Select Difficulty
+            </button>
+          </div>
+          <div class="title vcenter">Level 4 Puzzles</div>
+        </div>
+      </div>
+
+      <div class="previews">
+        <div id="pw-preview-template" class="pushworld_preview">
+          <canvas class="vcenter" height="120px" width="120px"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="puzzle_panel">
+      <div class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <div class="left-buttons">
+            <button class="all_puzzles btn btn-large btn-default">
+              <span class="icon icon-home icon-text"></span>
+              Puzzle List
+            </button>
+          </div>
+          <div class="title vcenter">Puzzle name</div>
+          <div class="right-buttons">
+            <button class="reset_button btn btn-large btn-default pull-right">
+              <span class="icon icon-fast-backward icon-text"></span>
+              Reset
+            </button>
+
+            <button class="undo_button btn btn-large btn-default pull-right">
+              <span class="icon icon-left icon-text"></span>
+              Undo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="puzzle">
+        <div id="instructions_modal" class="modal" style="display:block;">
+          <div class="modal-content">
+            <div class="arrow-keys">
+              <div class="key hidden"></div>
+              <div class="key"><span class="icon icon-up-bold"></span></div>
+              <div class="key hidden"></div>
+              <div class="key"><span class="icon icon-left-bold"></span></div>
+              <div class="key"><span class="icon icon-down-bold"></span></div>
+              <div class="key"><span class="icon icon-right-bold"></span></div>
+            </div>
+            <div class="text">Use the arrow keys to push the <a>red shapes</a> into their outlines.</div>
+            <button type="submit" class="btn btn-form btn-large btn-primary">OK, got it!</button>
+          </div>
+        </div>
+
+        <div id="solved_modal" class="modal">
+          <div class="modal-content">
+            Solved!
+          </div>
+        </div>
+
+        <canvas id="play_canvas" height="500px" width="728px"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener(
+  "keydown",
+  (e) => {
+    if (
+      ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
+        e.code
+      )
+    ) {
+      e.preventDefault();
+    }
+  },
+  false
+);
+</script>
+
+
+
+
+<div style="width: 100%; margin-top: 32px; float: left;">
+<div style="width: 50%; height: auto; float: left;">
+  <strong>Evaluation - Classic Planners</strong>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Fast Forward is an early seminal planning algorithm. Its search heuristic relies on a delete relaxation for efficient computation, but this relaxation also reduces the accuracy of the heuristic.</span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Fast Downward introduced the concept of domain transition graphs, which are precomputed to efficiently estimate the cost of transitioning a variable to a desired value, like moving an object into a target position.</span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">LAMA won the sequential satisficing track of the International Planning Competition (IPC) 2008 and introduced the concept of landmarks, which are propositional formulas that must be satisfied at some time in all solutions of a planning task.</span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Fast Downward Stone Soup won the satisficing track of IPC 2018 using a portfolio of multiple planners.</span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Best-First Width Search won the agile track of IPC 2018 by introducing a heuristic that prioritizes exploring states with novel combinations of variable values.</span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Saarplan was the runner-up in the agile track of IPC 2018, and like FDSS, it uses a portfolio of multiple planners.</span></li>
+
+  </ul>
+</div>
+<div style="margin-left: 50%; height: auto;">
+  <img src="images/pushworld-evaluation-planner.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
+</div>
+</div>
+
+<div style="width: 100%; float: left;">
+<div style="width: 50%; height: auto; float: left;">
+  <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="256" align="right" />
+</div>
+<div style="margin-left: 51%; height: auto;">
+  <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="256"  align="left" />
+</div>
+</div>
+
+
+
+<div style="width: 100%; margin-top: 32px; float: left;">
+<div style="width: 50%; height: auto; float: left;">
+  <strong>Evaluation - Deep Reinforcement Learning</strong>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">DQN Well-known,representative    q-learning(value-based),  open source,  among most popular DRLframeworks. XL: Scott TODO: re-write formally</span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">PPO[21] Well-known, representative policy optimiza-tion,  open  source,  among  most  popular  DRL  frame-works. XL: Scott TODO: re-write formally.</span></li>
+
+  </ul>
+</div>
+<div style="margin-left: 50%; height: auto;">
+  <img src="images/pushworld-evaluation-planner.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
+</div>
+</div>
+
+<div style="width: 100%; float: left;">
+<div style="width: 50%; height: auto; float: left;">
+  <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="256" align="right" />
+</div>
+<div style="margin-left: 51%; height: auto;">
+  <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="256"  align="left" />
+</div>
+</div>
+
+
+
+
+<div style="width: 100%; margin-top: 32px; float: left;">
+<div style="width: 50%; height: auto; float: left;">
+  <strong>Download</strong>
+  <ul>
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Source code: <a href="https://github.com/deepmind/pushworld" target="_blank">https://github.com/deepmind/pushworld</a></span></li>
+
+  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Paper: <a href="https://arxiv.org/abs/8495.19481" target="_blank">https://arxiv.org/abs/8495.19481</a></span></li>
+
+  </ul>
+</div>
+</div>
+
+
+
+<div style="width: 100%; margin-top: 32px; float: left;">
+  <div style="width: 50%; height: auto; float: left;">
+  <p style="text-align: left;"><strong>Cite Push World</strong></p>
+  <pre style="overflow-x: auto; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
+@article{pushworld2022,
+  title={Push World: A benchmark for planning with physical tools and obstacles},
+  author={Author1, author2, author2},
+  journal={arXiv preprint arXiv:2022.10212},
+  year={2022}
+}
+  </pre>
+  </div>
+<div style="margin-left: 50%; height: auto;">
+  <img src="images/pushworld-paper.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
+</div>
+</div>
+
+
+
+</body>
 </html>
