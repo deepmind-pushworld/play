@@ -242,17 +242,17 @@
 <div class="section">
   <div class="title">Evaluation: Classical Planners</div>
   <ul>
-    <li><span>Fast Forward is an early seminal planning algorithm. Its search heuristic relies on a delete relaxation for efficient computation, but this relaxation also reduces the accuracy of the heuristic.</span></li>
+    <li><span><em>Fast Forward</em> is a seminal planning algorithm re-lying on a delete relaxation heuristic for efficient com-putation at a loss of accuracy.</span></li>
 
-    <li><span>Fast Downward introduced the concept of domain transition graphs, which are precomputed to efficiently estimate the cost of transitioning a variable to a desired value, like moving an object into a target position.</span></li>
+    <li><span><em>Fast  Downward</em>  precomputes  domain  transitiongraphs to efficiently estimate the cost of transitioning avariable to a desired value.</span></li>
 
-    <li><span>LAMA won the sequential satisficing track of the International Planning Competition (IPC) 2008 and introduced the concept of landmarks, which are propositional formulas that must be satisfied at some time in all solutions of a planning task.</span></li>
+    <li><span><em>LAMA</em> uses propositional  formulas  that  must  besatisfied as landmarks during planning (winner of IPC2008 sequential satisficing track).</span></li>
 
-    <li><span>Fast Downward Stone Soup won the satisficing track of IPC 2018 using a portfolio of multiple planners.</span></li>
+    <li><span><em>Fast Downward Stone Soup(FDSS)</em> is a portfolioof planners (winner of IPC 2018 satisficing track).</span></li>
 
-    <li><span>Best-First Width Search won the agile track of IPC 2018 by introducing a heuristic that prioritizes exploring states with novel combinations of variable values.</span></li>
+    <li><span><em>Best-First Width Search(BFWS)</em> uses a heuristicthat prioritizes exploring states with novel combinationsof variable values ( winner of IPC 2018 agile track).</span></li>
 
-    <li><span>Saarplan was the runner-up in the agile track of IPC 2018, and like FDSS, it uses a portfolio of multiple planners.</span></li>
+    <li><span><em>Saarplan</em> is another portfolio of planners (runner-upof IPC 2018 agile).</span></li>
   </ul>
 
   <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
@@ -267,8 +267,8 @@
 <div class="section">
   <div class="title">Evaluation: Deep Reinforcement Learning</div>
   <ul>
-    <li><span>DQN Well-known,representative    q-learning(value-based),  open source,  among most popular DRLframeworks. XL: Scott TODO: re-write formally</span></li>
-    <li><span>PPO[21] Well-known, representative policy optimiza-tion,  open  source,  among  most  popular  DRL  frame-works. XL: Scott TODO: re-write formally.</span></li>
+    <li><span><em>Deep Q-Networks (DQN)</em> is an off-policy, value-based algorithm that has shown great success in Atari games and other domains.</span></li>
+    <li><span><em>Proximal Policy Optimization (PPO)</em> is an on-policy policy gradient algorithm that has been shown to be powerful and robust for a wide range of tasks.</span></li>
   </ul>
 
   <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
