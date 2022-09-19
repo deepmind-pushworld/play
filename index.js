@@ -18,6 +18,21 @@ colors = {
     WALL_BORDER: "#050505",
 }
 
+
+// Disable default scrollbar movement from arrow keys
+window.addEventListener(
+  "keydown",
+  (e) => {
+    if (
+      ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.code)
+    ) {
+      e.preventDefault();
+    }
+  },
+  false
+);
+
+
 function convertFileToPushworld(filedump) {
     var lines = filedump.split("\n").map(line => line.trim()).filter(line => line)
     var name = lines[2].split(":")[1].trim();

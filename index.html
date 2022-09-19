@@ -5,99 +5,58 @@
   <meta charset="UTF-8">
   <title>PushWorld</title>
 
-  <!- https://electronjs.org/docs/tutorial/security#csp-meta-tag ->
   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="photon.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="puzzle_player.css">
 
   <!-- Javascript -->
   <script src="jquery-3.6.0.min.js" charset="utf-8"></script>
   <script src="index.js" charset="utf-8"></script>
-
-  <style>
-  html {
-      margin:    0 auto;
-      max-width: 720px;
-  }
-  </style>
-
 </head>
 
 <body>
-
-
-<div>
-<p style="text-align: center;"><strong>PushWorld: A benchmark for planning with physical tools and obstacles</strong></p>
-<p style="text-align: center;">First Author, Second Author, Third Author, Fourth Author, &hellip;</p>
-<p style="text-align: center;"><sup>1</sup>DeepMind</p>
-<p style="text-align: center;"><sup>2</sup>Intrinsic AI</p>
-<p style="text-align: center;">pushworld@deepmind.com</p>
-<p style="text-align: center;">https://arxiv.org/abs/8495.19481</p>
+<div id="header">
+  <div class="content">
+    <div class="title">PushWorld: A benchmark for planning with physical tools and obstacles</div>
+    <img class="banner" src="images/sample-puzzles.png" alt="Example PushWorld Puzzles"/>
+  </div>
 </div>
 
-
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-<div style="width: 50%; height: auto; float: left;">
-  <strong>About PushWorld</strong>
-  <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">PushWorld is a novel grid-world environment with physical tools and obstacles for reasoning and planning.</span></li>
-  </ul>
-  <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Challenges in PushWorld</span></li>
-  <ul>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Complex Object Shape</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Path planning</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Manipulation planning</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Movable Obstacles</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Tool use</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">Multiple goals</span></li>
-  </ul>
-  </ul>
-  <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">PushWorld is available as a Gym environment and in PDDL format.</span></li>
-  </ul>
-  <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">PushWorld is suitable for</span></li>
-  <ul>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">classic planning research</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">deep reinforcement learning research</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">combined task and motion planning research</span></li>
-  <li style="font-weight: 400;" aria-level="2"><span style="font-weight: 400;">cognitive science research</span></li>
-  </ul>
-  </ul>
-</div>
-<div style="margin-left: 50%; height: auto;">
-  <img src="images/pushworld-preview.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
-</div>
+<div class="section">
+  <div class="main-links">
+    <a class="btn btn-large btn-default" href="https://arxiv.org/abs/8495.19481">
+      <span class="icon icon-doc-text-inv icon-text"></span>
+      Read Paper
+    </a>
+    <a class="btn btn-large btn-default" href="https://arxiv.org/abs/8495.19481">
+      <span class="icon icon-github icon-text"></span>
+      View Github
+    </a>
+    <a class="btn btn-large btn-default" style="margin-right: 0px;" href="mailto:pushworld@deepmind.com">
+      <span class="icon icon-mail icon-text"></span>
+      Contact Us
+    </a>
+  </div>
 </div>
 
+<div class="section">
+  <span class="text">
+  PushWorld is a novel grid-world environment designed to test planning and reasoning
+  with physical tools and movable obstacles. While recent advances in artificial intelligence have achieved human-level performance in environments like Starcraft and Go, many physical reasoning tasks remain challenging for computers. The PushWorld benchmark contains a collection of puzzles that emphasize this challenge while minimizing the complexity of physics.</span>
 
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-<div style="width: 33.3%; height: auto; float: left;">
-  <strong>PushWorld Vs Related Environments</strong>
-  <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">PushWorld raises many challenges that only partially exist in other similar environments such as Sokoban.</span></li>
-  </ul>
-</div>
-<div style="margin-left: 33.3%; height: auto;">
-  <img src="images/pushworld-related.png" alt="PushWorld Sample Puzzles" width="600" height="auto" />
-</div>
+  <span class="text">PushWorld is available as an OpenAI Gym environment and in PDDL format in <a href="https://www.deepmind.com/">Github</a>. The environment is suitable for research in classical planning, reinforcement learning, combined task and motion planning, and cognitive science.</span>
 </div>
 
-
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-  <p style="text-align: left;"><strong>Play PushWorld</strong></p>
+<div class="section">
+  <div class="title">Play PushWorld</div>
 
   <div class="pushworld_puzzles">
     <div class="select_puzzle_group">
       <div class="toolbar toolbar-header">
         <div class="toolbar-actions">
-          <div class="left-buttons"></div>
           <div class="title vcenter">Select a Puzzle Difficulty</div>
         </div>
       </div>
@@ -117,17 +76,17 @@
         <div class="toolbar-actions">
           <div class="left-buttons">
             <button class="return_select_puzzle_group btn btn-large btn-default">
-              <span class="icon icon-home icon-text"></span>
+              <span class="icon icon-left icon-text"></span>
               Select Difficulty
             </button>
           </div>
-          <div class="title vcenter">Level 1 Puzzles</div>
+          <div class="title puzzle_title vcenter">Level 1 Puzzles</div>
         </div>
       </div>
 
       <div class="previews">
         <div id="pw-preview-template" class="pushworld_preview">
-          <canvas class="vcenter" height="120px" width="120px"></canvas>
+          <canvas class="vcenter" height="130px" width="130px"></canvas>
         </div>
       </div>
     </div>
@@ -138,17 +97,17 @@
         <div class="toolbar-actions">
           <div class="left-buttons">
             <button class="return_select_puzzle_group btn btn-large btn-default">
-              <span class="icon icon-home icon-text"></span>
+              <span class="icon icon-left icon-text"></span>
               Select Difficulty
             </button>
           </div>
-          <div class="title vcenter">Level 2 Puzzles</div>
+          <div class="title puzzle_title vcenter">Level 2 Puzzles</div>
         </div>
       </div>
 
       <div class="previews">
         <div id="pw-preview-template" class="pushworld_preview">
-          <canvas class="vcenter" height="120px" width="120px"></canvas>
+          <canvas class="vcenter" height="130px" width="130px"></canvas>
         </div>
       </div>
     </div>
@@ -159,17 +118,17 @@
         <div class="toolbar-actions">
           <div class="left-buttons">
             <button class="return_select_puzzle_group btn btn-large btn-default">
-              <span class="icon icon-home icon-text"></span>
+              <span class="icon icon-left icon-text"></span>
               Select Difficulty
             </button>
           </div>
-          <div class="title vcenter">Level 3 Puzzles</div>
+          <div class="title puzzle_title vcenter">Level 3 Puzzles</div>
         </div>
       </div>
 
       <div class="previews">
         <div id="pw-preview-template" class="pushworld_preview">
-          <canvas class="vcenter" height="120px" width="120px"></canvas>
+          <canvas class="vcenter" height="130px" width="130px"></canvas>
         </div>
       </div>
     </div>
@@ -180,17 +139,17 @@
         <div class="toolbar-actions">
           <div class="left-buttons">
             <button class="return_select_puzzle_group btn btn-large btn-default">
-              <span class="icon icon-home icon-text"></span>
+              <span class="icon icon-left icon-text"></span>
               Select Difficulty
             </button>
           </div>
-          <div class="title vcenter">Level 4 Puzzles</div>
+          <div class="title puzzle_title vcenter">Level 4 Puzzles</div>
         </div>
       </div>
 
       <div class="previews">
-        <div id="pw-preview-template" class="pushworld_preview">
-          <canvas class="vcenter" height="120px" width="120px"></canvas>
+        <div id="pw-preview-template">
+          <canvas class="vcenter" height="130px" width="130px"></canvas>
         </div>
       </div>
     </div>
@@ -200,14 +159,14 @@
         <div class="toolbar-actions">
           <div class="left-buttons">
             <button class="all_puzzles btn btn-large btn-default">
-              <span class="icon icon-home icon-text"></span>
+              <span class="icon icon-layout icon-text"></span>
               Puzzle List
             </button>
           </div>
-          <div class="title vcenter">Puzzle name</div>
+          <div class="title puzzle_title vcenter">Puzzle name</div>
           <div class="right-buttons">
             <button class="reset_button btn btn-large btn-default pull-right">
-              <span class="icon icon-fast-backward icon-text"></span>
+              <span class="icon icon-to-start icon-text"></span>
               Reset
             </button>
 
@@ -230,7 +189,12 @@
               <div class="key"><span class="icon icon-down-bold"></span></div>
               <div class="key"><span class="icon icon-right-bold"></span></div>
             </div>
-            <div class="text">Use the arrow keys to push the <a>red shapes</a> into their outlines.</div>
+            <div class="text">Use the arrow keys to push the <a>red shapes</a> into their outlines. Use the
+              <span class="icon icon-left icon-text" style="margin: 0px 5px;"></span><b>Undo</b>
+            and
+            <span class="icon icon-to-start icon-text" style="margin: 0px 5px;"></span><b>Reset</b>
+            buttons above to retry a puzzle.
+            </div>
             <button type="submit" class="btn btn-form btn-large btn-primary">OK, got it!</button>
           </div>
         </div>
@@ -241,129 +205,119 @@
           </div>
         </div>
 
-        <canvas id="play_canvas" height="500px" width="728px"></canvas>
+        <canvas id="play_canvas" height="500px" width="628px"></canvas>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  window.addEventListener(
-  "keydown",
-  (e) => {
-    if (
-      ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
-        e.code
-      )
-    ) {
-      e.preventDefault();
-    }
-  },
-  false
-);
-</script>
+<div class="section">
+  <div class="title">PushWorld vs. Related Environments</div>
 
+  <span class="text">Solving PushWorld puzzles requires many skills, including:</span>
 
-
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-<div style="width: 50%; height: auto; float: left;">
-  <strong>Evaluation - Classic Planners</strong>
   <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Fast Forward is an early seminal planning algorithm. Its search heuristic relies on a delete relaxation for efficient computation, but this relaxation also reduces the accuracy of the heuristic.</span></li>
-
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Fast Downward introduced the concept of domain transition graphs, which are precomputed to efficiently estimate the cost of transitioning a variable to a desired value, like moving an object into a target position.</span></li>
-
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">LAMA won the sequential satisficing track of the International Planning Competition (IPC) 2008 and introduced the concept of landmarks, which are propositional formulas that must be satisfied at some time in all solutions of a planning task.</span></li>
-
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Fast Downward Stone Soup won the satisficing track of IPC 2018 using a portfolio of multiple planners.</span></li>
-
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Best-First Width Search won the agile track of IPC 2018 by introducing a heuristic that prioritizes exploring states with novel combinations of variable values.</span></li>
-
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Saarplan was the runner-up in the agile track of IPC 2018, and like FDSS, it uses a portfolio of multiple planners.</span></li>
-
+    <li>
+      <b>Path Planning</b>: Finding a collision-free path to move an object from one position to another, considering walls and object shapes.
+    </li>
+    <li>
+      <b>Manipulation Planning</b>: Exploring alternative ways to push an object along a desired path. Some puzzles require the agent to preemptively position itself so that it can move from pushing in one direction to pushing in a different direction in the future.
+    </li>
+    <li>
+      <b>Moving Obstacles</b>: The agent must decide between finding a path around an obstacle or moving the obstacle out of the way. Some obstacles introduce choices in which freeing one path blocks another, and choices can be irreversible. Obstacles can also be "parasitic": once pushed against an object, the agent can never separate the obstacle from the object.
+    </li>
+    <li>
+      <b>Using Tools</b>: Sometimes to move an object into a desired position, the agent must use one or more objects as tools to indirectly push the target object: the agent pushes a tool object, which simultaneously pushes the target or another tool. In some puzzles the agent must assemble a tool by pushing multiple objects together.
+    </li>
+    <li>
+      <b>Prioritizing Multiple Goals</b>: Sometimes moving an object into its goal position may prevent achieving another goal. Puzzles may also require achieving multiple goals simultaneously by preemptively arranging objects and pushing them all at once.
+    </li>
   </ul>
-</div>
-<div style="margin-left: 50%; height: auto;">
-  <img src="images/pushworld-evaluation-planner.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
-</div>
+
+  <span class="text">Several existing environments have comparable physical dynamics: <a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a>, <a href="https://en.wikipedia.org/wiki/Sliding_puzzle">sliding block puzzles</a>, and grid-based path planning. However, none of these environments require all of the skills above.</span>
+
+  <img src="images/pushworld-related.png" alt="PushWorld Sample Puzzles" width="100%" height="auto"/>
 </div>
 
-<div style="width: 100%; float: left;">
-<div style="width: 50%; height: auto; float: left;">
-  <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="256" align="right" />
-</div>
-<div style="margin-left: 51%; height: auto;">
-  <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="256"  align="left" />
-</div>
-</div>
-
-
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-<div style="width: 50%; height: auto; float: left;">
-  <strong>Evaluation - Deep Reinforcement Learning</strong>
+<div class="section">
+  <div class="title">Evaluation: Classical Planners</div>
   <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">DQN Well-known,representative    q-learning(value-based),  open source,  among most popular DRLframeworks. XL: Scott TODO: re-write formally</span></li>
+    <li><span>Fast Forward is an early seminal planning algorithm. Its search heuristic relies on a delete relaxation for efficient computation, but this relaxation also reduces the accuracy of the heuristic.</span></li>
 
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">PPO[21] Well-known, representative policy optimiza-tion,  open  source,  among  most  popular  DRL  frame-works. XL: Scott TODO: re-write formally.</span></li>
+    <li><span>Fast Downward introduced the concept of domain transition graphs, which are precomputed to efficiently estimate the cost of transitioning a variable to a desired value, like moving an object into a target position.</span></li>
 
+    <li><span>LAMA won the sequential satisficing track of the International Planning Competition (IPC) 2008 and introduced the concept of landmarks, which are propositional formulas that must be satisfied at some time in all solutions of a planning task.</span></li>
+
+    <li><span>Fast Downward Stone Soup won the satisficing track of IPC 2018 using a portfolio of multiple planners.</span></li>
+
+    <li><span>Best-First Width Search won the agile track of IPC 2018 by introducing a heuristic that prioritizes exploring states with novel combinations of variable values.</span></li>
+
+    <li><span>Saarplan was the runner-up in the agile track of IPC 2018, and like FDSS, it uses a portfolio of multiple planners.</span></li>
   </ul>
-</div>
-<div style="margin-left: 50%; height: auto;">
-  <img src="images/pushworld-evaluation-planner.png" alt="PushWorld Sample Puzzles" width="400" height="auto" />
-</div>
+
+  <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
+
+  <div style="display: inline-block;">
+      <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
+      <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="right" style="margin-left: 20px;"/>
+    </div>
+  </div>
 </div>
 
-<div style="width: 100%; float: left;">
-<div style="width: 50%; height: auto; float: left;">
-  <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="256" align="right" />
-</div>
-<div style="margin-left: 51%; height: auto;">
-  <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="256"  align="left" />
-</div>
-</div>
-
-
-
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-<div style="width: 50%; height: auto; float: left;">
-  <strong>Download</strong>
+<div class="section">
+  <div class="title">Evaluation: Deep Reinforcement Learning</div>
   <ul>
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Source code: <a href="https://github.com/deepmind/pushworld" target="_blank">https://github.com/deepmind/pushworld</a></span></li>
-
-  <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Paper: <a href="https://arxiv.org/abs/8495.19481" target="_blank">https://arxiv.org/abs/8495.19481</a></span></li>
-
+    <li><span>DQN Well-known,representative    q-learning(value-based),  open source,  among most popular DRLframeworks. XL: Scott TODO: re-write formally</span></li>
+    <li><span>PPO[21] Well-known, representative policy optimiza-tion,  open  source,  among  most  popular  DRL  frame-works. XL: Scott TODO: re-write formally.</span></li>
   </ul>
+
+  <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
+
+  <div style="display: inline-block;">
+      <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
+      <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="right" style="margin-left: 20px;"/>
+    </div>
+  </div>
 </div>
-</div>
 
+<div class="section">
+  <div class="title">Cite PushWorld</div>
 
-
-<div style="width: 100%; margin-top: 32px; float: left;">
-  <div style="width: 50%; height: auto; float: left;">
-  <p style="text-align: left;"><strong>Cite PushWorld</strong></p>
-  <pre style="overflow-x: auto; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
+  <div style="display: inline-block;">
+    <div style="width: 60%; height: auto; float: left;">
+      <pre style="overflow-x: auto; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; font-size: 14px;">
 @article{pushworld2022,
   title={PushWorld: A benchmark for planning with physical tools and obstacles},
   author={Author1, author2, author2},
   journal={arXiv preprint arXiv:2022.10212},
   year={2022}
 }
-  </pre>
+      </pre>
+    </div>
+    <img src="images/pushworld-paper.png" alt="PushWorld Sample Puzzles" width="100%" height="auto" style="-webkit-filter: drop-shadow(5px 5px 5px #666666); filter: drop-shadow(5px 5px 5px #666666); float: left; width: 40%; height: auto;"/>
   </div>
-<div style="margin-left: 50%; height: auto;">
-  <img src="images/pushworld-paper.png" alt="PushWorld Sample Puzzles" width="400" height="auto" style="-webkit-filter: drop-shadow(5px 5px 5px #666666); filter: drop-shadow(5px 5px 5px #666666);"/>
-</div>
 </div>
 
+<div class="section">
+  <div class="main-links">
+    <a class="btn btn-large btn-default" href="https://arxiv.org/abs/8495.19481">
+      <span class="icon icon-doc-text-inv icon-text"></span>
+      Read Paper
+    </a>
+    <a class="btn btn-large btn-default" href="https://arxiv.org/abs/8495.19481">
+      <span class="icon icon-github icon-text"></span>
+      View Github
+    </a>
+    <a class="btn btn-large btn-default" style="margin-right: 0px;" href="mailto:pushworld@deepmind.com">
+      <span class="icon icon-mail icon-text"></span>
+      Contact Us
+    </a>
+  </div>
+</div>
 
-
-<div style="width: 100%; margin-top: 32px; float: left;">
+<div id="footer">
   <p style="text-align: center;"><strong>Copyright © 2022 DeepMind Technologies Ltd.</strong></p>
 </div>
-
 
 </body>
 </html>

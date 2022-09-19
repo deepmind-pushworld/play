@@ -16,7 +16,7 @@
 	border-radius: 6px;
 	margin: 8px auto;
 	overflow: hidden;
-	width: 750px;
+	width: 650px;
 }
 
 .previews {
@@ -31,8 +31,8 @@
 	margin: 4px;
 	cursor: pointer;
 	overflow: hidden;
-	width: 140px;
-    height: 140px;
+	width: 150px;
+    height: 150px;
 }
 
 .pushworld_preview:hover, .pushworld_preview:focus {
@@ -158,7 +158,7 @@
 #instructions_modal .modal-content {
 	font-size: 20px;
  	width: 350px;
-	margin-top: 140px;
+	margin-top: 105px;
 }
 
 #instructions_modal a {
@@ -168,7 +168,7 @@
 
 .pushworld_puzzles .left-buttons {
     float: left;
-    width: 170px;
+    width: 140px;
     height: 32px;
 }
 
@@ -185,15 +185,18 @@
 }
 
 .pushworld_puzzles .title {
-    font-size: 15px;
+    font-size: 15.5px;
     color: #333;
     font-weight: bold;
     height: 100%;
-    width: 400px;
     text-align: center;
-    float: left;
     margin-top: 4px;
     margin-bottom: 0px;
+}
+
+.pushworld_puzzles .puzzle_title {
+    width: 330px;
+    float: left;
 }
 
 .vcenter {
