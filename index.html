@@ -241,18 +241,30 @@
 
 <div class="section">
   <div class="title">Evaluation: Classical Planners</div>
+  <b>Methods</b>
   <ul>
-    <li><span><em>Fast Forward</em> is a seminal planning algorithm re-lying on a delete relaxation heuristic for efficient com-putation at a loss of accuracy.</span></li>
+    <li><span><em>Fast Forward</em> is a seminal planning algorithm relying on a delete relaxation heuristic for efficient computation at a loss of accuracy.</span></li>
 
-    <li><span><em>Fast  Downward</em>  precomputes  domain  transitiongraphs to efficiently estimate the cost of transitioning avariable to a desired value.</span></li>
+    <li><span><em>Fast  Downward</em>  precomputes  domain  transition graphs to efficiently estimate the cost of transitioning avariable to a desired value.</span></li>
 
-    <li><span><em>LAMA</em> uses propositional  formulas  that  must  besatisfied as landmarks during planning (winner of IPC2008 sequential satisficing track).</span></li>
+    <li><span><em>LAMA</em> uses propositional  formulas  that  must  be satisfied as landmarks during planning (winner of IPC2008 sequential satisficing track).</span></li>
 
-    <li><span><em>Fast Downward Stone Soup(FDSS)</em> is a portfolioof planners (winner of IPC 2018 satisficing track).</span></li>
+    <li><span><em>Fast Downward Stone Soup (FDSS)</em> is a portfolio of planners (winner of IPC 2018 satisficing track).</span></li>
 
-    <li><span><em>Best-First Width Search(BFWS)</em> uses a heuristicthat prioritizes exploring states with novel combinationsof variable values ( winner of IPC 2018 agile track).</span></li>
+    <li><span><em>Best-First Width Search (BFWS)</em> uses a heuristic that prioritizes exploring states with novel combinationsof variable values ( winner of IPC 2018 agile track).</span></li>
 
     <li><span><em>Saarplan</em> is another portfolio of planners (runner-upof IPC 2018 agile).</span></li>
+
+    <li><span><em>RGD</em> uses our proposed recursive graph distance heuristic.</span></li>
+
+    <li><span><em>RGD+Novelty</em> uses our proposed RGD heuristic combined with the Novelty heuristic as in BFWS.</span></li>
+  </ul>
+
+
+  <b>Results</b>
+  <ul>
+    <li><span>RGD+Novelty solves the most 73.5% puzzles, followed by FDSS.</span></li>
+    <li><span>Novelty+RGD solves more puzzles in 50 seconds than FDSS doesin 30 minutes.</li>
   </ul>
 
   <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
@@ -265,19 +277,27 @@
 </div>
 
 <div class="section">
-  <div class="title">Evaluation: Deep Reinforcement Learning</div>
+  <div class="title">Evaluation: Model-Free Deep RL</div>
+  <b>Methods</b>
   <ul>
     <li><span><em>Deep Q-Networks (DQN)</em> is an off-policy, value-based algorithm that has shown great success in Atari games and other domains.</span></li>
     <li><span><em>Proximal Policy Optimization (PPO)</em> is an on-policy policy gradient algorithm that has been shown to be powerful and robust for a wide range of tasks.</span></li>
   </ul>
 
-  <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
+  <b>Results</b>
+  <ul>
+    <li><span>Neither DQN nor PPO managed to obtain any meaningful results on Level 1 after augmentation due to the nature of extreme sparse reward in PushWorld.</span></li>
+    <li><span>A simplified Level 0 puzzle set and variations were created to mitigate sparse reward by keeping the puzzle size small.</span></li>
+    <li><span>PPO outperformed DQN but showing some signs of overfitting.</span></li>
+  </ul>
 
-  <div style="display: inline-block;">
+  <img src="images/pushworld-evaluation-rl.png" alt="Model-Free Deep RL Results" width="100%" height="auto"/>
+
+<!--   <div style="display: inline-block;">
       <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
       <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="right" style="margin-left: 20px;"/>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <div class="section">
