@@ -1,5 +1,5 @@
 // Github settings
-github_repo = "xloudm/pushworldtest"
+github_repo = "deepmind-pushworld/play"
 file_source = "https://raw.githubusercontent.com/" + github_repo + "/main/"
 repo_contents = "https://api.github.com/repos/" + github_repo + "/contents/"
 
@@ -33,12 +33,11 @@ window.addEventListener(
 );
 
 
-function convertFileToPushworld(filedump) {
-    var lines = filedump.split("\n").map(line => line.trim()).filter(line => line)
-    var name = lines[2].split(":")[1].trim();
+function convertFileToPushworld(name, filedump) {
+    var lines = filedump.split("\n").map(line => line.trim()).filter(line => line);
     var elements = {'w': []};
     var r = 1;  // add 1 for the border wall
-    for (var line of lines.slice(3)) {
+    for (var line of lines) {
         var cells = line.split(" ").filter(line => line);
         for (var c=1; c <= cells.length; c++) {
             var cell = cells[c-1].split("+").filter(e => e);
@@ -97,7 +96,7 @@ function convertFileToPushworld(filedump) {
             boundaryPixels: boundaryPixels,
         }
 
-        if (e == 's') {
+        if (e == 'a') {
             pushworld.moveables.push(obj);
             obj.fillColor = colors.SELF;
             obj.borderColor = colors.SELF_BORDER;
@@ -121,7 +120,7 @@ function convertFileToPushworld(filedump) {
             pushworld.walls.push(obj);
             obj.fillColor = colors.WALL;
             obj.borderColor = colors.WALL_BORDER;
-        } else if (e == 'sw') {
+        } else if (e == 'aw') {
             pushworld.walls.push(obj);
             obj.fillColor = colors.SELF_WALL;
             obj.borderColor = colors.SELF_WALL_BORDER;
@@ -409,8 +408,8 @@ function get_object_ids_to_positions(pushworld, state) {
 }
 
 function get_pushed_objects(pushworld, state, displacement) {
-    var self = pushworld.moveables[0];
-    var frontier = [self];
+    var actor = pushworld.moveables[0];
+    var frontier = [actor];
     var transitive_stopping = false;
     var pushed_object_ids = [];
 
@@ -427,7 +426,7 @@ function get_pushed_objects(pushworld, state, displacement) {
             if (pushed_object_ids.includes(other_obj.id)) continue;
 
             // The Self Wall is only visible to the Self entity.
-            if (obj.id != 's' && other_obj.id == 'sw') continue;
+            if (obj.id != 'a' && other_obj.id == 'aw') continue;
 
             // Is other_obj pushed by obj?
             var new_pos = addPoints(id_to_pos[obj.id], displacement);
@@ -441,7 +440,7 @@ function get_pushed_objects(pushworld, state, displacement) {
 
                     if (other_obj.id == 'w') {
                         transitive_stopping = true;
-                    } else if (obj.id == 's' && other_obj.id == 'sw') {
+                    } else if (obj.id == 'a' && other_obj.id == 'aw') {
                         transitive_stopping = true;
                     }
                     break;
@@ -506,17 +505,18 @@ document.addEventListener('DOMContentLoaded', () => {
         var preview_panel = $(this);
 
         $.getJSON(
-            repo_contents + "problems/" + preview_panel.attr("puzzle_group"),
+            repo_contents + "puzzles/" + preview_panel.attr("puzzle_group"),
             function(result) {
                 var pushworlds = [];
 
                 for (file_info of result) {
+                    var name = file_info["name"].slice(0, -4);
                     $.ajax({
                         async: false,
                         type: 'GET',
                         url: file_info['download_url'],
                         success: function(puzzle_string) {
-                            pushworlds.push(convertFileToPushworld(puzzle_string));
+                            pushworlds.push(convertFileToPushworld(name, puzzle_string));
                         }
                     });
                 }
@@ -604,7 +604,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function display_puzzles(pushworlds, preview_panel)
 {
     for (var i=0; i < pushworlds.length; i++) {
-        console.log(pushworlds[i].name);
         clone = $("#pw-preview-template").clone();
         clone.removeAttr('id');
         clone.children(".name").html(pushworlds[i].name);
