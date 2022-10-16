@@ -82,6 +82,10 @@
 	position: relative;
 }
 
+.preview_list {
+	position: relative;
+}
+
 #pw-preview-template {
 	display: none;
 }
@@ -147,6 +151,12 @@
 	background-color: #eee;
 	height: 33px;
 	width: 40px;
+}
+
+.loading .modal-content {
+	font-size: 30px;
+	width: 200px;
+	margin-top: 200px;
 }
 
 #solved_modal .modal-content {

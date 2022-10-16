@@ -73,8 +73,7 @@ function convertFileToPushworld(name, filedump) {
     };
 
     var sorted_elements = Object.keys(elements);
-    sorted_elements.sort();
-    sorted_elements.reverse();  // put Self in front of Moveables
+    sorted_elements.sort();  // put the actor "a" in front of movables
 
     for (var e of sorted_elements) {
         var pixels = elements[e];
@@ -499,16 +498,20 @@ function init_game(pushworld) {
 var active_game = null;
 var active_preview_panel = null;
 
-document.addEventListener('DOMContentLoaded', () => {
 
+function load_puzzle_group(group_name) {
     $(".pushworld_puzzles .preview_panel").each(function(){
         var preview_panel = $(this);
+        var loading_modal = preview_panel.children(".preview_list").children(".loading");
+
+        if (preview_panel.attr("puzzle_group") != group_name
+            || loading_modal.css("display") == "none") {
+            return;
+        }
 
         $.getJSON(
             repo_contents + "puzzles/" + preview_panel.attr("puzzle_group"),
             function(result) {
-                var pushworlds = [];
-
                 for (file_info of result) {
                     var name = file_info["name"].slice(0, -4);
                     $.ajax({
@@ -516,15 +519,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         type: 'GET',
                         url: file_info['download_url'],
                         success: function(puzzle_string) {
-                            pushworlds.push(convertFileToPushworld(name, puzzle_string));
+                            display_puzzle(
+                                convertFileToPushworld(name, puzzle_string),
+                                preview_panel
+                            );
                         }
                     });
                 }
-                display_puzzles(pushworlds, preview_panel);
+                loading_modal.css("display", "none");
             }
         )
     });
+}
 
+document.addEventListener('DOMContentLoaded', () => {
     $('.pushworld_puzzles .all_puzzles').click(() => {
         active_preview_panel.css("display", "inline");
         active_game = null;
@@ -556,11 +564,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('.select_puzzle_group .btn').click(function(){
         var puzzle_group = $(this).attr("puzzle_group");
+
         active_preview_panel = $(".preview_panel").filter(function(){
             return $(this).attr("puzzle_group") == puzzle_group;
         });
         $(".select_puzzle_group").css("display", "none");
         active_preview_panel.css("display", "block");
+        load_puzzle_group(puzzle_group);
     })
 
     $('.pushworld_puzzles .return_select_puzzle_group').click(() => {
@@ -601,37 +611,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function display_puzzles(pushworlds, preview_panel)
+function display_puzzle(pushworld, preview_panel)
 {
-    for (var i=0; i < pushworlds.length; i++) {
-        clone = $("#pw-preview-template").clone();
-        clone.removeAttr('id');
-        clone.children(".name").html(pushworlds[i].name);
+    clone = $("#pw-preview-template").clone();
+    clone.removeAttr('id');
+    clone.children(".name").html(pushworld.name);
 
-        clone.data("puzzle", pushworlds[i]);
+    clone.data("puzzle", pushworld);
 
-        clone.click(pushworlds[i], (event) => {
-            var pushworld = event.data;
-            init_game(pushworld);
-            $('.pushworld_puzzles .puzzle_panel .title').html(pushworld.name);
-            preview_panel.css("display", "none");
-            active_preview_panel = preview_panel;
-            $('.pushworld_puzzles .puzzle_panel').css("display", "inline");
-        })
+    clone.click(pushworld, (event) => {
+        var pushworld = event.data;
+        init_game(pushworld);
+        $('.pushworld_puzzles .puzzle_panel .title').html(pushworld.name);
+        preview_panel.css("display", "none");
+        active_preview_panel = preview_panel;
+        $('.pushworld_puzzles .puzzle_panel').css("display", "inline");
+    })
 
-        clone.appendTo(preview_panel.children(".previews"));
-        var canvas = clone.children()[0];
-        var ctx = canvas.getContext('2d');
-        pushworlds[i].render_window = {
-            window_offset: [0, 0],
-            window_size: [canvas.height, canvas.width],
-            ctx: ctx,
-            border_width: 1
-        };
-        repaint({
-            state_history: [pushworlds[i].initial_state],
-            pushworld: pushworlds[i],
-            render_window: pushworlds[i].render_window
-        });
-    }
+    clone.appendTo(preview_panel.children(".preview_list").children(".previews"));
+    var canvas = clone.children()[0];
+    var ctx = canvas.getContext('2d');
+    pushworld.render_window = {
+        window_offset: [0, 0],
+        window_size: [canvas.height, canvas.width],
+        ctx: ctx,
+        border_width: 1
+    };
+    repaint({
+        state_history: [pushworld.initial_state],
+        pushworld: pushworld,
+        render_window: pushworld.render_window
+    });
 };
