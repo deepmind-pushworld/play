@@ -1,13 +1,13 @@
 
 /* Fit to the screen size when the screen is smaller than 650px. */
 @media screen and (max-width: 650px) {
-    body {
+    html, body {
         width: 100vw;
     }
 }
 
 html {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
 }
 

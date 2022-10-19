@@ -515,7 +515,7 @@ function load_puzzle_group(group_name) {
                 for (file_info of result) {
                     var name = file_info["name"].slice(0, -4);
                     $.ajax({
-                        async: false,
+                        async: true,
                         type: 'GET',
                         url: file_info['download_url'],
                         success: function(puzzle_string) {
