@@ -111,3 +111,11 @@ ul {
     width: 100%;
     margin-top: 1.5em;
 }
+
+.pw-puzzle-loading {
+    margin: 62px;
+}
+
+.pushworld_preview canvas {
+    display: none;
+}

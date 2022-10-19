@@ -497,15 +497,18 @@ function init_game(pushworld) {
 
 var active_game = null;
 var active_preview_panel = null;
+var loaded_puzzle_groups = [];
 
 
 function load_puzzle_group(group_name) {
+    if (loaded_puzzle_groups.includes(group_name)) {
+        return;
+    }
+    loaded_puzzle_groups.push(group_name);
+
     $(".pushworld_puzzles .preview_panel").each(function(){
         var preview_panel = $(this);
-        var loading_modal = preview_panel.children(".preview_list").children(".loading");
-
-        if (preview_panel.attr("puzzle_group") != group_name
-            || loading_modal.css("display") == "none") {
+        if (preview_panel.attr("puzzle_group") != group_name) {
             return;
         }
 
@@ -513,7 +516,9 @@ function load_puzzle_group(group_name) {
             repo_contents + "puzzles/" + preview_panel.attr("puzzle_group"),
             function(result) {
                 for (file_info of result) {
-                    var name = file_info["name"].slice(0, -4);
+                    const name = file_info["name"].slice(0, -4);
+                    const preview_div = add_puzzle_preview(preview_panel);
+
                     $.ajax({
                         async: true,
                         type: 'GET',
@@ -521,12 +526,12 @@ function load_puzzle_group(group_name) {
                         success: function(puzzle_string) {
                             display_puzzle(
                                 convertFileToPushworld(name, puzzle_string),
+                                preview_div,
                                 preview_panel
                             );
                         }
                     });
                 }
-                loading_modal.css("display", "none");
             }
         )
     });
@@ -611,12 +616,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function display_puzzle(pushworld, preview_panel)
+function add_puzzle_preview(preview_panel)
 {
     clone = $("#pw-preview-template").clone();
     clone.removeAttr('id');
-    clone.children(".name").html(pushworld.name);
+    clone.appendTo(preview_panel.children(".preview_list").children(".previews"));
+    return clone;
+}
 
+function display_puzzle(pushworld, preview_div, preview_panel)
+{
+    clone = preview_div;
+    clone.children(".pw-puzzle-loading").css("display", "none");
+    clone.children("canvas").css("display", "block");
+
+    clone.children(".name").html(pushworld.name);
     clone.data("puzzle", pushworld);
 
     clone.click(pushworld, (event) => {
@@ -628,8 +642,7 @@ function display_puzzle(pushworld, preview_panel)
         $('.pushworld_puzzles .puzzle_panel').css("display", "inline");
     })
 
-    clone.appendTo(preview_panel.children(".preview_list").children(".previews"));
-    var canvas = clone.children()[0];
+    var canvas = clone.children("canvas")[0];
     var ctx = canvas.getContext('2d');
     pushworld.render_window = {
         window_offset: [0, 0],
