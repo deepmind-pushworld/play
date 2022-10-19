@@ -52,6 +52,7 @@
 
 <div class="section">
   <div class="title">Play PushWorld</div>
+  Here you can play all 200 hand-designed puzzles in the PushWorld benchmark.
 
   <div class="pushworld_puzzles">
     <div class="select_puzzle_group">
@@ -254,46 +255,41 @@
     </li>
   </ul>
 
-  <span class="text">Several existing environments have comparable physical dynamics: <a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a>, <a href="https://en.wikipedia.org/wiki/Sliding_puzzle">sliding block puzzles</a>, and grid-based path planning. However, none of these environments require all of the skills above.</span>
+  <span class="text">Several existing environments have dynamics similar to PushWorld: <a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a>, <a href="https://en.wikipedia.org/wiki/Sliding_puzzle">sliding block puzzles</a>, and grid-based path planning. However, none of these environments require all of the skills above.</span>
 
   <img src="images/pushworld-related.png" alt="PushWorld Sample Puzzles" width="100%" height="auto"/>
 </div>
 
 <div class="section">
   <div class="title">Evaluation: Classical Planners</div>
-  <b>Methods</b>
+  We compared the following classical planning algorithms on the set of 200 hand-designed puzzles above:
   <ul>
-    <li><span><em>Fast Forward</em> is a seminal planning algorithm relying on a delete relaxation heuristic for efficient computation at a loss of accuracy.</span></li>
+    <li><span><b>Fast Forward</b> is a seminal planning algorithm that relies on a delete relaxation heuristic.</span></li>
 
-    <li><span><em>Fast  Downward</em>  precomputes  domain  transition graphs to efficiently estimate the cost of transitioning avariable to a desired value.</span></li>
+    <li><span><b>Fast  Downward</b>  introduced domain transition graphs and the causal graph heuristic (winner of IPC 2004 classical track).</span></li>
 
-    <li><span><em>LAMA</em> uses propositional  formulas  that  must  be satisfied as landmarks during planning (winner of IPC2008 sequential satisficing track).</span></li>
+    <li><span><b>LAMA</b> introduced the landmark heuristic (winner of IPC 2008 sequential satisficing track).</span></li>
 
-    <li><span><em>Fast Downward Stone Soup (FDSS)</em> is a portfolio of planners (winner of IPC 2018 satisficing track).</span></li>
+    <li><span><b>Best-First Width Search (BFWS)</b> introduced the novelty heuristic, which prioritizes exploring states with novel combinations of variable values (winner of IPC 2018  agile track).</span></li>
 
-    <li><span><em>Best-First Width Search (BFWS)</em> uses a heuristic that prioritizes exploring states with novel combinationsof variable values ( winner of IPC 2018 agile track).</span></li>
+    <li><span><b>Fast Downward Stone Soup (FDSS)</b> is a portfolio of planners (winner of IPC 2018 satisficing track).</span></li>
 
-    <li><span><em>Saarplan</em> is another portfolio of planners (runner-upof IPC 2018 agile).</span></li>
+    <li><span><b>Saarplan</b> is another portfolio of planners (runner-up of IPC 2018 agile track).</span></li>
 
-    <li><span><em>RGD</em> uses our proposed recursive graph distance heuristic.</span></li>
+    <li><span><b>RGD</b> is a greedy best-first search with the recursive graph distance heuristic introduced in the <a href="https://arxiv.org/abs/8495.19481">PushWorld paper</a>.</span></li>
 
-    <li><span><em>RGD+Novelty</em> uses our proposed RGD heuristic combined with the Novelty heuristic as in BFWS.</span></li>
+    <li><span><b>RGD+Novelty</b> is a greedy best-first search with a lexicographic heuristic that combines the novelty heuristic with the RGD heuristic, prioritizing novelty.</span></li>
   </ul>
 
-
-  <b>Results</b>
-  <ul>
-    <li><span>RGD+Novelty solves the most 73.5% puzzles, followed by FDSS.</span></li>
-    <li><span>Novelty+RGD solves more puzzles in 50 seconds than FDSS doesin 30 minutes.</li>
-  </ul>
+  The plot below shows how many puzzles each planner solves within a given time per puzzle. RGD+Novelty solves the most puzzles (73.5%) within 30 minutes per puzzle, followed by FDSS (66.5%). Notably, Novelty+RGD solves more puzzles in 50 seconds than FDSS does in 30 minutes.
 
   <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
 
-  <div style="display: inline-block;">
+<!--   <div style="display: inline-block;">
       <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
       <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="right" style="margin-left: 20px;"/>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <div class="section">
