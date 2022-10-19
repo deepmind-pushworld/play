@@ -257,7 +257,7 @@
 
   <span class="text">Several existing environments have dynamics similar to PushWorld: <a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a>, <a href="https://en.wikipedia.org/wiki/Sliding_puzzle">sliding block puzzles</a>, and grid-based path planning. However, none of these environments require all of the skills above.</span>
 
-  <img src="images/pushworld-related.png" alt="PushWorld Sample Puzzles" width="100%" height="auto"/>
+  <img class="classical-results" src="images/pushworld-related.png" alt="Related Environments"/>
 </div>
 
 <div class="section">
@@ -283,7 +283,7 @@
 
   The plot below shows how many puzzles each planner solves within a given time per puzzle. RGD+Novelty solves the most puzzles (73.5%) within 30 minutes per puzzle, followed by FDSS (66.5%). Notably, Novelty+RGD solves more puzzles in 50 seconds than FDSS does in 30 minutes.
 
-  <img src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%" height="auto"/>
+  <img class="classical-results" src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results"/>
 
 <!--   <div style="display: inline-block;">
       <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
@@ -294,20 +294,16 @@
 
 <div class="section">
   <div class="title">Evaluation: Model-Free Deep RL</div>
-  <b>Methods</b>
-  <ul>
-    <li><span><em>Deep Q-Networks (DQN)</em> is an off-policy, value-based algorithm that has shown great success in Atari games and other domains.</span></li>
-    <li><span><em>Proximal Policy Optimization (PPO)</em> is an on-policy policy gradient algorithm that has been shown to be powerful and robust for a wide range of tasks.</span></li>
-  </ul>
 
-  <b>Results</b>
-  <ul>
-    <li><span>Neither DQN nor PPO managed to obtain any meaningful results on Level 1 after augmentation due to the nature of extreme sparse reward in PushWorld.</span></li>
-    <li><span>A simplified Level 0 puzzle set and variations were created to mitigate sparse reward by keeping the puzzle size small.</span></li>
-    <li><span>PPO outperformed DQN but showing some signs of overfitting.</span></li>
-  </ul>
+  <span class="text">We selected two deep reinforcement learning (RL) algorithms to evaluate on PushWorld: <b>Deep Q-Network</b> (DQN), an off-policy, value-based algorithm, and <b>Proximal Policy Optimization</b> (PPO), an on-policy, policy-gradient algorithm. We chose these algorithms because they are widely used, easy to implement, and have shown competitive performance on diverse and challenging tasks like Atari and continuous robotic control.</span>
 
-  <img src="images/pushworld-evaluation-rl.png" alt="Model-Free Deep RL Results" width="100%" height="auto"/>
+  <span class="text">We trained both algorithms on the Level 1 puzzles above for 500 million steps and measured the percentage of Level 1 puzzles they could solve. The final performance of both algorithms was equal to their performance at the start of training. We believe this is due to the low probability of solving most Level 1 puzzles with the initial random policy, resulting in sparse positive rewards and therefore insufficient signal for training.</span>
+
+  <span class="text">To address the sparse reward problem, we programmatically generated a collection of Level 0 puzzle sets that are no larger than 10x10 cells. The <a href="https://arxiv.org/abs/8495.19481">PushWorld paper</a> provides details of these puzzle sets, and the table below shows the percentage of training and testing puzzles solved by PPO and DQN. Overall, PPO outperforms DQN but shows signs of overfitting.</span>
+
+  <div class="rl-results-table">
+    <img src="images/pushworld-evaluation-rl.png" alt="Model-Free Deep RL Results"/>
+  </div>
 
 <!--   <div style="display: inline-block;">
       <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
