@@ -12,41 +12,41 @@
 }
 
 .pushworld_puzzles {
-	border:1px solid #aaa;
-	border-radius: 6px;
-	margin: 8px auto;
-	overflow: hidden;
-	width: 650px;
+    border:1px solid #aaa;
+    border-radius: 6px;
+    margin: 8px auto;
+    overflow: hidden;
+    width: 650px;
 }
 
 .previews {
-	overflow-y:auto;
-	height:520px;
+    overflow-y:auto;
+    height:520px;
 }
 
 .pushworld_preview {
-	float: left;
-	border: 2px solid transparent;
-	border-radius: 8px;
-	margin: 4px;
-	cursor: pointer;
-	overflow: hidden;
-	width: 150px;
+    float: left;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    margin: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    width: 150px;
     height: 150px;
 }
 
 .pushworld_preview:hover, .pushworld_preview:focus {
-	border-color: #ddd;
-	background-color: #eee;
+    border-color: #ddd;
+    background-color: #eee;
 }
 
 .pushworld_preview:active {
-	border-color: #aaa;
-	background-color: #eee;
+    border-color: #aaa;
+    background-color: #eee;
 }
 
 .pushworld_preview * {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .pushworld_preview canvas {
@@ -58,36 +58,40 @@
     margin-right: 4px;
 }
 
+.btn .icon {
+    font-size: 19px;
+}
+
 /*
 .pushworld_preview canvas {
-	margin-left: 8px;
-	margin-right: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .pushworld_preview .name {
-	text-align: center;
-	font-weight: 500;
-	font-size: 13px;
-	margin: 5px;
-	overflow: hidden;
-	white-space: nowrap;
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    margin: 5px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 */
 
 .pushworld_puzzles .puzzle_panel {
-	display: none;
+    display: none;
 }
 
 .pushworld_puzzles .puzzle {
-	position: relative;
+    position: relative;
 }
 
 .preview_list {
-	position: relative;
+    position: relative;
 }
 
 #pw-preview-template {
-	display: none;
+    display: none;
 }
 
 #play_canvas {
@@ -102,110 +106,110 @@
 
 /* The Modal (background) */
 .modal {
-	display: none; /* Hidden by default */
-	position: absolute; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #999;
-	text-align: center;
-	border-radius: 10px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #999;
+    text-align: center;
+    border-radius: 10px;
 }
 
 .arrow-keys {
-	margin: auto;
-	width: 132px;
+    margin: auto;
+    width: 132px;
 }
 
 .hidden {
-	visibility: hidden;
+    visibility: hidden;
 }
 
 #instructions_modal .text {
-	clear: both;
-	padding: 10px;
+    clear: both;
+    padding: 10px;
 }
 
 #instructions_modal button {
-	font-size: 17px;
+    font-size: 17px;
 }
 
 .arrow-keys .key {
-	padding: 0px;
-	border: 1px solid #888;
-	border-radius: 6px;
-	margin: 2px;
-	float: left;
-	background-color: #eee;
-	height: 33px;
-	width: 40px;
+    padding: 0px;
+    border: 1px solid #888;
+    border-radius: 6px;
+    margin: 2px;
+    float: left;
+    background-color: #eee;
+    height: 33px;
+    width: 40px;
 }
 
 .loading .modal-content {
-	font-size: 30px;
-	width: 200px;
-	margin-top: 200px;
+    font-size: 30px;
+    width: 200px;
+    margin-top: 200px;
 }
 
 #solved_modal .modal-content {
-	font-size: 30px;
-	width: 200px;
-	margin-top: 200px;
+    font-size: 30px;
+    width: 200px;
+    margin-top: 200px;
 }
 
 #instructions_modal .modal-content {
-	font-size: 20px;
- 	width: 350px;
-	margin-top: 105px;
+    font-size: 20px;
+    width: 350px;
+    margin-top: 105px;
 }
 
 #instructions_modal a {
-	color: red;
+    color: red;
 }
 
 
 .pushworld_puzzles .left-buttons {
     float: left;
-    width: 140px;
+    width: 160px;
     height: 32px;
 }
 
 .pushworld_puzzles .right-buttons {
     float: right;
-    width: 172px;
+    width: 187px;
 }
 
 /* Photon overrides */
 
 .pushworld_puzzles .btn {
-	font-size: 13px;
-	cursor: pointer;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .pushworld_puzzles .title {
-    font-size: 15.5px;
+    font-size: 16px;
     color: #333;
     font-weight: bold;
     height: 100%;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 6px;
     margin-bottom: 0px;
 }
 
 .pushworld_puzzles .puzzle_title {
-    width: 330px;
+    width: 290px;
     float: left;
 }
 
@@ -234,8 +238,8 @@
 }
 
 .pushworld_puzzles .toolbar {
-	border-bottom: 1px solid #aaa;
-	height: 41px;
+    border-bottom: 1px solid #aaa;
+    height: 46px;
 }
 
 
