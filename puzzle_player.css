@@ -128,24 +128,6 @@
     border-radius: 10px;
 }
 
-/* Mobile devices */
-@media (hover: none), (pointer: coarse) {
-    #touch-keypad {
-        display: block;
-    }
-}
-
-/* Non-mobile */
-@media (hover: hover) and (pointer: fine) {
-    #touch-keypad {
-        display: none;
-    }
-}
-
-#touch-keypad .key {
-    touch-action: manipulation;
-}
-
 .arrow-keys {
     margin: auto;
     width: 132px;
@@ -175,6 +157,47 @@
     width: 40px;
     font-size: 20px;
     text-align: center;
+}
+
+#touch-keypad {
+    width: 282px;
+    height: 192px;
+}
+
+#touch-keypad.arrow-keys .key {
+    height: 90px;
+    width: 90px;
+    font-size: 56px;
+}
+
+#touch-keypad .up-down-group {
+    float: left;
+    width: 94px;
+}
+
+#touch-keypad .key {
+    touch-action: manipulation;
+}
+
+#touch-keypad .left {
+    margin-top: 47px;
+}
+#touch-keypad .right {
+    margin-top: 47px;
+}
+
+/* Mobile devices */
+@media (hover: none), (pointer: coarse) {
+    #touch-keypad {
+        display: block;
+    }
+}
+
+/* Non-mobile */
+@media (hover: hover) and (pointer: fine) {
+    #touch-keypad {
+        display: none;
+    }
 }
 
 .loading .modal-content {
