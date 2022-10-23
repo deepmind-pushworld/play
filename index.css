@@ -1,10 +1,23 @@
 
 /* Fit to the screen size when the screen is smaller than 650px. */
-@media screen and (max-device-width: 650px),
+/*@media screen and (max-device-width: 650px),
        screen and (max-device-width: 1300px) and (-webkit-max-device-pixel-ratio: 2),
        screen and (max-device-width: 1950px) and (-webkit-max-device-pixel-ratio: 3) {
     html, body {
         width: 100vw;
+    }
+}*/
+
+/* Mobile devices */
+@media (hover: none), (pointer: coarse) {
+    #touch-keypad {
+        display: block;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #touch-keypad {
+        display: none;
     }
 }
 
@@ -12,11 +25,13 @@ html {
   margin: 0;
   padding: 0;
   font-size: 16px;
+  width: 100%;
 }
 
 body {
     margin: 0;
     padding: 0;
+    width: 100%;
 
     font-family: sans-serif;
     letter-spacing: .25px;
@@ -25,6 +40,8 @@ body {
     background-color: #fff;
     /*color: #123693;*/
     font-family: sans-serif;
+
+    -webkit-text-size-adjust: none;
 }
 
 #header, #footer {
