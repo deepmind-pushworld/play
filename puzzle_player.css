@@ -128,6 +128,24 @@
     border-radius: 10px;
 }
 
+/* Mobile devices */
+@media (hover: none), (pointer: coarse) {
+    #touch-keypad {
+        display: block;
+    }
+}
+
+/* Non-mobile */
+@media (hover: hover) and (pointer: fine) {
+    #touch-keypad {
+        display: none;
+    }
+}
+
+#touch-keypad .key {
+    touch-action: manipulation;
+}
+
 .arrow-keys {
     margin: auto;
     width: 132px;
@@ -155,6 +173,8 @@
     background-color: #eee;
     height: 33px;
     width: 40px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .loading .modal-content {
@@ -196,6 +216,7 @@
 .pushworld_puzzles .btn {
     font-size: 16px;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 .pushworld_puzzles .title {

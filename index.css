@@ -8,19 +8,6 @@
     }
 }*/
 
-/* Mobile devices */
-@media (hover: none), (pointer: coarse) {
-    #touch-keypad {
-        display: block;
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-    #touch-keypad {
-        display: none;
-    }
-}
-
 html {
   margin: 0;
   padding: 0;

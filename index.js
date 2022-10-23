@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $(".select_puzzle_group").css("display", "none");
         active_preview_panel.css("display", "block");
         load_puzzle_group(puzzle_group);
-    })
+    });
 
     $('.pushworld_puzzles .return_select_puzzle_group').click(() => {
         active_preview_panel.css("display", "none");
@@ -585,36 +585,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.onkeydown = function(e){
-        if (active_game === null) return;
-
         e = e || window.event;
+        keydown_handler(e.keyCode)
+    };
 
-        var displacements = {'38' : [-1,0], '40' : [1,0], '37' : [0,-1], '39' : [0,1]};
-        var action_labels = {'38' : 'U', '40' : 'D', '37' : 'L', '39' : 'R'};
+    $("#touch-keypad .up").click(() => {
+        keydown_handler('38');
+    });
+    $("#touch-keypad .down").click(() => {
+        keydown_handler('40');
+    });
+    $("#touch-keypad .left").click(() => {
+        keydown_handler('37');
+    });
+    $("#touch-keypad .right").click(() => {
+        keydown_handler('39');
+    });
+});
 
-        if (e.keyCode in displacements) {
-            var current_state = active_game.state_history[active_game.state_history.length-1];
-            if (is_goal_state(active_game.pushworld, current_state))
-                return;
+function keydown_handler(keycode) {
+    if (active_game === null) return;
 
-            var [next_state, transitive_stopping] = move(
-                active_game.pushworld,
-                current_state,
-                displacements[e.keyCode],
-            );
+    var displacements = {'38' : [-1,0], '40' : [1,0], '37' : [0,-1], '39' : [0,1]};
+    var action_labels = {'38' : 'U', '40' : 'D', '37' : 'L', '39' : 'R'};
 
-            if (!transitive_stopping) {
-                active_game.state_history.push(next_state);
-                active_game.action_history += action_labels[e.keyCode];
-                console.log(active_game.action_history);
-                repaint(active_game);
+    if (keycode in displacements) {
+        var current_state = active_game.state_history[active_game.state_history.length-1];
+        if (is_goal_state(active_game.pushworld, current_state))
+            return;
 
-                if (is_goal_state(active_game.pushworld, next_state))
-                    $('#solved_modal').fadeIn(400).delay(500).fadeOut(400);
-            }
+        var [next_state, transitive_stopping] = move(
+            active_game.pushworld,
+            current_state,
+            displacements[keycode],
+        );
+
+        if (!transitive_stopping) {
+            active_game.state_history.push(next_state);
+            active_game.action_history += action_labels[keycode];
+            console.log(active_game.action_history);
+            repaint(active_game);
+
+            if (is_goal_state(active_game.pushworld, next_state))
+                $('#solved_modal').fadeIn(400).delay(500).fadeOut(400);
         }
     }
-});
+}
 
 function add_puzzle_preview(preview_panel)
 {
