@@ -266,10 +266,10 @@
 
     <li><span><b>RGD</b> is a greedy best-first search with the recursive graph distance heuristic introduced in the <a href="https://arxiv.org/abs/8495.19481">PushWorld paper</a>.</span></li>
 
-    <li><span><b>RGD+Novelty</b> is a greedy best-first search with a lexicographic heuristic that combines the novelty heuristic with the RGD heuristic, prioritizing novelty.</span></li>
+    <li><span><b>Novelty+RGD</b> is a greedy best-first search with a lexicographic heuristic that combines the novelty heuristic with the RGD heuristic, prioritizing novelty.</span></li>
   </ul>
 
-  The plot below shows how many puzzles each planner solves within a given time per puzzle. RGD+Novelty solves the most puzzles (73.5%) within 30 minutes per puzzle, followed by FDSS (66.5%). Notably, Novelty+RGD solves more puzzles in 50 seconds than FDSS does in 30 minutes.
+  The plot below shows how many puzzles each planner solves within a given time per puzzle. Novelty+RGD solves the most puzzles (73.5%) within 30 minutes per puzzle, followed by FDSS (66%). Notably, Novelty+RGD solves as many puzzles in 46 seconds as FDSS solves in 30 minutes.
 
   <img class="classical-results" src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results"/>
 
