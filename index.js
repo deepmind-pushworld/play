@@ -352,6 +352,64 @@ function drawEdges(
     ctx.stroke();
 }
 
+function drawGrid(render_window, grid_dimensions) {
+    var ctx = render_window.ctx;
+    var window_offset = render_window.window_offset;
+    var window_size = render_window.window_size;
+
+    var scale = Math.min(
+        window_size[0] / grid_dimensions[0],
+        window_size[1] / grid_dimensions[1]
+    )
+    var center_offset = [
+        (window_size[0] - scale * grid_dimensions[0]) / 2,
+        (window_size[1] - scale * grid_dimensions[1]) / 2,
+    ];
+    window_offset = addPoints(window_offset, center_offset);
+
+    var strokeWidth = 2;
+    ctx.strokeStyle = "#F0F0F0";
+    ctx.lineWidth = strokeWidth;
+
+    for (var i=0; i < grid_dimensions[0]; i++) {
+        ctx.beginPath();
+
+        var p = [i, 0]
+        ctx.moveTo(
+            p[1] * scale + window_offset[1],
+            p[0] * scale + window_offset[0]
+        );
+
+        p = [i, grid_dimensions[1]]
+        ctx.lineTo(
+            p[1] * scale + window_offset[1],
+            p[0] * scale + window_offset[0]
+        );
+
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    for (var j=0; j < grid_dimensions[1]; j++) {
+        ctx.beginPath();
+
+        var p = [0, j]
+        ctx.moveTo(
+            p[1] * scale + window_offset[1],
+            p[0] * scale + window_offset[0]
+        );
+
+        p = [grid_dimensions[0], j]
+        ctx.lineTo(
+            p[1] * scale + window_offset[1],
+            p[0] * scale + window_offset[0]
+        );
+
+        ctx.closePath();
+        ctx.stroke();
+    }
+}
+
 function move(pushworld, state, displacement) {
     var next_state;
     var [pushed_object_ids, transitive_stopping] = get_pushed_objects(pushworld, state, displacement);
@@ -457,14 +515,17 @@ function zip(a, b) {
     });
 }
 
-
-function repaint(game_instance) {
+function repaint(game_instance, show_grid=true) {
     game_instance.render_window.ctx.clearRect(
         game_instance.render_window.window_offset[1],
         game_instance.render_window.window_offset[0],
         game_instance.render_window.window_size[1],
         game_instance.render_window.window_size[0],
     );
+
+    if (show_grid) {
+        drawGrid(game_instance.render_window, game_instance.pushworld.grid_dimensions);
+    }
 
     var current_state = game_instance.state_history[game_instance.state_history.length-1];
     drawObjects(
@@ -670,5 +731,5 @@ function display_puzzle(pushworld, preview_div, preview_panel)
         state_history: [pushworld.initial_state],
         pushworld: pushworld,
         render_window: pushworld.render_window
-    });
+    }, false);
 };
