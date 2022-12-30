@@ -275,12 +275,11 @@
   font-weight: bold;
   height: 100%;
   text-align: center;
-  margin-top: 6px;
-  margin-bottom: 0px;
+  margin: 0px auto;
 }
 
-.pushworld_puzzles .puzzle_title {
-  float: left;
+.pushworld_puzzles .toolbar.title-toolbar {
+    height: 38px;
 }
 
 .vcenter {
@@ -309,7 +308,7 @@
 
 .pushworld_puzzles .toolbar {
   border-bottom: 1px solid #aaa;
-  height: 46px;
+  height: 45px;
 }
 
 

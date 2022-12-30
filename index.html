@@ -12,10 +12,6 @@
   <link rel="stylesheet" href="photon.min.css">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="puzzle_player.css">
-
-  <!-- Javascript -->
-  <script src="jquery-3.6.0.min.js" charset="utf-8"></script>
-  <script src="index.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -59,10 +55,8 @@
 
   <div class="pushworld_puzzles">
     <div class="select_puzzle_group">
-      <div class="toolbar toolbar-header">
-        <div class="toolbar-actions">
-          <div class="title vcenter">Select a Puzzle Difficulty</div>
-        </div>
+      <div class="toolbar toolbar-header title-toolbar">
+        <div class="title vcenter">Select a Puzzle Difficulty</div>
       </div>
       <div class="select-difficulty">
         <div style="text-align: center;">
@@ -81,6 +75,9 @@
 
     <div class="preview_panel" puzzle_group="level1" style="display:none;">
 
+      <div class="toolbar toolbar-header title-toolbar">
+        <div class="title puzzle_title vcenter">Level 1 Puzzles</div>
+      </div>
       <div class="toolbar toolbar-header">
         <div class="toolbar-actions">
           <div class="left-buttons">
@@ -89,7 +86,6 @@
               Select Difficulty
             </button>
           </div>
-          <div class="title puzzle_title vcenter">Level 1 Puzzles</div>
         </div>
       </div>
 
@@ -100,6 +96,9 @@
 
     <div class="preview_panel" puzzle_group="level2" style="display:none;">
 
+      <div class="toolbar toolbar-header title-toolbar">
+        <div class="title puzzle_title vcenter">Level 2 Puzzles</div>
+      </div>
       <div class="toolbar toolbar-header">
         <div class="toolbar-actions">
           <div class="left-buttons">
@@ -108,7 +107,6 @@
               Select Difficulty
             </button>
           </div>
-          <div class="title puzzle_title vcenter">Level 2 Puzzles</div>
         </div>
       </div>
 
@@ -119,6 +117,9 @@
 
     <div class="preview_panel" puzzle_group="level3" style="display:none;">
 
+      <div class="toolbar toolbar-header title-toolbar">
+        <div class="title puzzle_title vcenter">Level 3 Puzzles</div>
+      </div>
       <div class="toolbar toolbar-header">
         <div class="toolbar-actions">
           <div class="left-buttons">
@@ -127,7 +128,6 @@
               Select Difficulty
             </button>
           </div>
-          <div class="title puzzle_title vcenter">Level 3 Puzzles</div>
         </div>
       </div>
 
@@ -138,6 +138,9 @@
 
     <div class="preview_panel" puzzle_group="level4" style="display:none;">
 
+      <div class="toolbar toolbar-header title-toolbar">
+        <div class="title puzzle_title vcenter">Level 4 Puzzles</div>
+      </div>
       <div class="toolbar toolbar-header">
         <div class="toolbar-actions">
           <div class="left-buttons">
@@ -146,7 +149,6 @@
               Select Difficulty
             </button>
           </div>
-          <div class="title puzzle_title vcenter">Level 4 Puzzles</div>
         </div>
       </div>
 
@@ -156,6 +158,9 @@
     </div>
 
     <div class="puzzle_panel">
+      <div class="toolbar toolbar-header title-toolbar">
+        <div class="title puzzle_title vcenter">Puzzle Name</div>
+      </div>
       <div class="toolbar toolbar-header">
         <div class="toolbar-actions">
           <div class="left-buttons">
@@ -164,7 +169,6 @@
               Puzzle List
             </button>
           </div>
-          <div class="title puzzle_title vcenter">Puzzle name</div>
           <div class="right-buttons">
             <button class="reset_button btn btn-large btn-default pull-right">
               <span class="icon icon-to-start icon-text"></span>
@@ -350,6 +354,10 @@
 <div id="footer">
   <p style="text-align: center;"><strong>Copyright © 2022 DeepMind Technologies Ltd.</strong></p>
 </div>
+
+<!-- Javascript - place at the end to avoid blocking page loading -->
+<script src="jquery-3.6.0.min.js" charset="utf-8"></script>
+<script src="index.js" charset="utf-8"></script>
 
 </body>
 </html>
