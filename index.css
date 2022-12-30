@@ -1,142 +1,135 @@
 
-/* Fit to the screen size when the screen is smaller than 650px. */
-/*@media screen and (max-device-width: 650px),
-       screen and (max-device-width: 1300px) and (-webkit-max-device-pixel-ratio: 2),
-       screen and (max-device-width: 1950px) and (-webkit-max-device-pixel-ratio: 3) {
-    html, body {
-        width: 100vw;
-    }
-}*/
-
 html {
   margin: 0;
   padding: 0;
   font-size: 16px;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 
-    font-family: sans-serif;
-    letter-spacing: .25px;
-    font-weight:  500;
-    font-size: 1rem;
-    background-color: #fff;
-    /*color: #123693;*/
-    font-family: sans-serif;
+  font-family: sans-serif;
+  letter-spacing: .25px;
+  font-weight:  500;
+  font-size: 1rem;
+  background-color: #fff;
+  /*color: #123693;*/
+  font-family: sans-serif;
 
-    /*-webkit-text-size-adjust: none;*/
+  /*-webkit-text-size-adjust: none;*/
 }
 
 #header, #footer {
-    background-color: #0053d6;
-    margin: 0;
-    padding: 1.25rem;
-    color: #fff;
+  background-color: #0053d6;
+  margin: 0;
+  padding: 1.25rem;
+  color: #fff;
 }
 
 #content {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 #header .content {
-    margin: 2em auto;
-    text-align: center;
-    max-width: 650px;
+  margin: 2em auto;
+  text-align: center;
+  max-width: 650px;
 }
 
 #header .title {
-    font-size: 48px;
-    line-height: 1.3;
-    font-family: Charter, Georgia, serif;
-    color: #fff;
+  font-size: 48px;
+  line-height: 1.3;
+  font-family: Charter, Georgia, serif;
+  color: #fff;
 }
 
 #header .subtitle {
-    font-size: 26px;
-    line-height: 1.3;
-    font-family: Charter, Georgia, serif;
-    color: #fff;
-    margin: 0 auto;
-    padding: 0 0.5rem;
-    max-width: 30rem;
+  font-size: 26px;
+  line-height: 1.3;
+  font-family: Charter, Georgia, serif;
+  color: #fff;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  max-width: 30rem;
 }
 
 #header .banner {
-    width: 100%;
-    height: auto;
-    margin-top: 2.2rem;
+  width: 100%;
+  height: auto;
+  margin-top: 2.2rem;
 }
 
 .main-links {
-    margin: 0.625em auto;
-    max-width: 448px;
+  margin: 0.625em auto;
+  max-width: 448px;
 }
 
 .main-links a {
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none !important;
-    margin: 10px 10px 10px 0px;
-    font-size: 14px;
-    cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  margin: 10px 10px 10px 0px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .section {
-    max-width: 650px;
-    margin: 2em auto;
-    padding: 0;
+  max-width: 650px;
+  margin: 2em auto;
+  padding: 0;
 }
 
 .section .title {
-    color: #123693;
-    font-size: 27px;
-    text-align: left;
+  color: #123693;
+  font-size: 27px;
+  text-align: left;
 }
 
 .section .text {
-    display: block;
-    margin: 1em 0;
+  display: block;
+  margin: 1em 0;
 }
 
 .section li {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 ul {
-    padding-inline-start: 2rem;
+  padding-inline-start: 2rem;
 }
 
 .section b {
-    color: #383838;
+  color: #383838;
 }
 
 .rl-results-table {
-    width: 54ch;
-    margin: 1.5em auto;
+  width: 54ch;
+  margin: 1.5em auto;
 }
 
 .rl-results-table img {
-    width: 100%;
+  width: 100%;
 }
 
 .related-table {
-    width: 100%;
-    margin-top: 1rem;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .classical-results {
-    width: 100%;
-    margin-top: 1.5rem;
+  width: 100%;
+  margin-top: 1.5rem;
 }
 
 .pw-puzzle-loading {
-    margin: 62px;
+  margin: 62px;
 }
 
 .pushworld_preview canvas {
-    display: none;
+  display: none;
 }
