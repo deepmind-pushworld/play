@@ -63,7 +63,7 @@
           <div class="title vcenter">Select a Puzzle Difficulty</div>
         </div>
       </div>
-      <div style="height:520px; background-color: #f6f6f6; padding-top:125px;">
+      <div class="select-difficulty">
         <div style="text-align: center;">
           <div><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level1">Level 1</div></div>
           <div style="margin-top:20px;"><div style="font-size:20px; padding:10px 20px;" class="btn btn-form btn-large btn-primary" puzzle_group="level2">Level 2</div></div>
@@ -207,13 +207,15 @@
 
         <canvas id="play_canvas" height="500px" width="628px"></canvas>
 
-        <div id="touch-keypad" class="arrow-keys">
-          <div class="key left"><span class="icon icon-left-bold"></span></div>
-          <div class="up-down-group">
-            <div class="key up"><span class="icon icon-up-bold"></span></div>
-            <div class="key down"><span class="icon icon-down-bold"></span></div>
+        <div id="touch-keypad-container">
+          <div id="touch-keypad" class="arrow-keys">
+            <div class="key left"><span class="icon icon-left-bold"></span></div>
+            <div class="up-down-group">
+              <div class="key up"><span class="icon icon-up-bold"></span></div>
+              <div class="key down"><span class="icon icon-down-bold"></span></div>
+            </div>
+            <div class="key right"><span class="icon icon-right-bold"></span></div>
           </div>
-          <div class="key right"><span class="icon icon-right-bold"></span></div>
         </div>
       </div>
     </div>
