@@ -275,17 +275,33 @@ function drawObjects(render_window, grid_dimensions, objects) {
 }
 
 
+function getCanvasSize(ctx) {
+    var size = [
+        ctx.canvas.getBoundingClientRect().height,
+        ctx.canvas.getBoundingClientRect().width
+    ];
+    return size;
+}
+
+
+function syncCanvasSize(ctx) {
+    var size = getCanvasSize(ctx);
+    ctx.canvas.height = size[0];
+    ctx.canvas.width = size[1];
+}
+
+
 function drawPixels(render_window, grid_dimensions, pixels, offset, color) {
     if (color === null || color === undefined) return;
 
     var ctx = render_window.ctx;
     var window_offset = render_window.window_offset;
-    var window_size = render_window.window_size;
+    var window_size = getCanvasSize(ctx);
 
     var scale = Math.min(
         window_size[0] / grid_dimensions[0],
         window_size[1] / grid_dimensions[1]
-    )
+    );
     var center_offset = [
         (window_size[0] - scale * grid_dimensions[0]) / 2,
         (window_size[1] - scale * grid_dimensions[1]) / 2,
@@ -314,7 +330,7 @@ function drawEdges(
 ) {
     var ctx = render_window.ctx;
     var window_offset = render_window.window_offset;
-    var window_size = render_window.window_size;
+    var window_size = getCanvasSize(ctx);
 
     if (points.length < 2) return;
 
@@ -355,7 +371,7 @@ function drawEdges(
 function drawGrid(render_window, grid_dimensions) {
     var ctx = render_window.ctx;
     var window_offset = render_window.window_offset;
-    var window_size = render_window.window_size;
+    var window_size = getCanvasSize(ctx);
 
     var scale = Math.min(
         window_size[0] / grid_dimensions[0],
@@ -516,11 +532,14 @@ function zip(a, b) {
 }
 
 function repaint(game_instance, show_grid=true) {
+    syncCanvasSize(game_instance.render_window.ctx);
+    var window_size = getCanvasSize(game_instance.render_window.ctx);
+
     game_instance.render_window.ctx.clearRect(
         game_instance.render_window.window_offset[1],
         game_instance.render_window.window_offset[0],
-        game_instance.render_window.window_size[1],
-        game_instance.render_window.window_size[0],
+        window_size[1],
+        window_size[0],
     );
 
     if (show_grid) {
@@ -540,15 +559,14 @@ function repaint(game_instance, show_grid=true) {
 }
 
 function init_game(pushworld) {
-    var canvas = $("#play_canvas")[0];
+    var canvas = $("#play_canvas");
     active_game = {
         pushworld: pushworld,
         state_history: [pushworld.initial_state],
         action_history: "",
         render_window: {
             window_offset: [0, 0],
-            window_size: [canvas.height, canvas.width],
-            ctx: canvas.getContext('2d'),
+            ctx: canvas[0].getContext('2d'),
             border_width: 2
         }
     }
@@ -617,6 +635,12 @@ document.addEventListener('DOMContentLoaded', () => {
             active_game.state_history = active_game.state_history.slice(0, n-1);
             active_game.action_history = active_game.action_history.slice(0, n-2);
             console.log(active_game.action_history);
+            repaint(active_game);
+        }
+    });
+
+    $(window).resize(function() {
+        if (active_game != null) {
             repaint(active_game);
         }
     });
@@ -712,18 +736,17 @@ function display_puzzle(pushworld, preview_div, preview_panel)
 
     clone.click(pushworld, (event) => {
         var pushworld = event.data;
-        init_game(pushworld);
         $('.pushworld_puzzles .puzzle_panel .title').html(pushworld.name);
         preview_panel.css("display", "none");
         active_preview_panel = preview_panel;
         $('.pushworld_puzzles .puzzle_panel').css("display", "inline");
+        init_game(pushworld);
     })
 
     var canvas = clone.children("canvas")[0];
     var ctx = canvas.getContext('2d');
     pushworld.render_window = {
         window_offset: [0, 0],
-        window_size: [canvas.height, canvas.width],
         ctx: ctx,
         border_width: 1
     };

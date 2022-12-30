@@ -16,7 +16,7 @@
   border-radius: 6px;
   margin: 8px auto;
   overflow: hidden;
-  width: 650px;
+  width: 100%;
 }
 
 .select-difficulty {
@@ -120,9 +120,9 @@
 
 #play_canvas {
   margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
   margin-bottom: 4px;
+  height: 500px;
+  width: 100%;
 }
 
 
@@ -254,13 +254,11 @@
 
 .pushworld_puzzles .left-buttons {
   float: left;
-  width: 160px;
   height: 32px;
 }
 
 .pushworld_puzzles .right-buttons {
   float: right;
-  width: 187px;
 }
 
 /* Photon overrides */
@@ -282,7 +280,6 @@
 }
 
 .pushworld_puzzles .puzzle_title {
-  width: 290px;
   float: left;
 }
 
