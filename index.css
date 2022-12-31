@@ -119,6 +119,39 @@ ul {
 .related-table {
   width: 100%;
   margin-top: 1rem;
+  font-size: 16px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.related-table td {
+  padding: 0px;
+  word-wrap: break-word;
+  overflow: visible;
+  white-space: normal;
+  line-height: 1.2em;
+  padding: 0.2em 0em;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.related-table .top-row td {
+  border-bottom: 1px solid #888;
+  text-align: center;
+}
+
+.related-table .yes {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(50, 125, 30);
+  text-align: center;
+}
+
+.related-table .no {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(185, 50, 30);
+  text-align: center;
 }
 
 .classical-results {

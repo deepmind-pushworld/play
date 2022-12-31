@@ -69,7 +69,7 @@
     </div>
 
     <div id="pw-preview-template" class="pushworld_preview">
-      <img src="images/loading.gif" class="pw-puzzle-loading"/>
+      <img src="images/loading.gif" class="pw-puzzle-loading" alt="Loading"/>
       <canvas class="vcenter" height="138px" width="138px"></canvas>
     </div>
 
@@ -252,7 +252,66 @@
 
   <span class="text">Several existing environments have dynamics similar to PushWorld: <a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a>, <a href="https://en.wikipedia.org/wiki/Sliding_puzzle">sliding block puzzles</a>, and grid-based path planning. However, none of these environments require all of the skills above.</span>
 
-  <img class="related-table" src="images/pushworld-related.png" alt="Related Environments"/>
+  <table class="related-table">
+    <colgroup>
+      <col span="1" style="width: 27%;">
+      <col span="1" style="width: 18.25%;">
+      <col span="1" style="width: 18.25%;">
+      <col span="1" style="width: 18.25%;">
+      <col span="1" style="width: 18.25%;">
+    </colgroup>
+    <tbody>
+      <tr class="top-row">
+        <td></td>
+        <td>Sokoban</td>
+        <td>Sliding Block Puzzles</td>
+        <td>Grid-Based Path Planning</td>
+        <td>PushWorld</td>
+      </tr>
+      <tr>
+        <td>Varied Object Shapes</td>
+        <td class="no">X</td>
+        <td class="yes">&#10004;</td>
+        <td class="yes">&#10004;</td>
+        <td class="yes">&#10004;</td>
+      </tr>
+      <tr>
+        <td>Path Planning</td>
+        <td class="yes">&#10004;</td>
+        <td class="no">X</td>
+        <td class="yes">&#10004;</td>
+        <td class="yes">&#10004;</td>
+      </tr>
+      <tr>
+        <td>Manipulation Planning</td>
+        <td class="no">X</td>
+        <td class="no">X</td>
+        <td class="no">X</td>
+        <td class="yes">&#10004;</td>
+      </tr>
+      <tr>
+        <td>Movable Obstacles</td>
+        <td class="yes">&#10004;</td>
+        <td class="yes">&#10004;</td>
+        <td class="no">X</td>
+        <td class="yes">&#10004;</td>
+      </tr>
+      <tr>
+        <td>Tool Use</td>
+        <td class="no">X</td>
+        <td class="no">X</td>
+        <td class="no">X</td>
+        <td class="yes">&#10004;</td>
+      </tr>
+      <tr>
+        <td>Multiple Goals</td>
+        <td class="yes">&#10004;</td>
+        <td class="yes">&#10004;</td>
+        <td class="no">X</td>
+        <td class="yes">&#10004;</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="section">
