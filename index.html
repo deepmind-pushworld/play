@@ -338,12 +338,6 @@
   The plot below shows how many puzzles each planner solves within a given time per puzzle. Novelty+RGD solves the most puzzles (69.1%) within 30 minutes per puzzle, followed by FDSS (61.4%). Notably, Novelty+RGD solves as many puzzles in 52 seconds as FDSS solves in 30 minutes.
 
   <img class="classical-results" src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results"/>
-
-<!--   <div style="display: inline-block;">
-      <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
-      <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="right" style="margin-left: 20px;"/>
-    </div>
-  </div> -->
 </div>
 
 <div class="section">
@@ -355,17 +349,79 @@
 
   <span class="text">To address the sparse reward problem, we programmatically generated a collection of Level 0 puzzle sets that are no larger than 10x10 cells. The <a href="https://arxiv.org/abs/8495.19481">PushWorld paper</a> provides details of these puzzle sets, and the table below shows the percentage of training and testing puzzles solved by PPO and DQN. Overall, PPO outperforms DQN but shows signs of overfitting.</span>
 
-  <div class="rl-results-table">
-    <img src="images/pushworld-evaluation-rl.png" alt="Model-Free Deep RL Results"/>
-  </div>
-
-<!--   <div style="display: inline-block;">
-      <img src="images/pushworld-planner-demo-po.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="left"/>
-      <img src="images/pushworld-planner-demo-mwo.gif" alt="PushWorld Sample Puzzles" width="auto" height="250px" align="right" style="margin-left: 20px;"/>
-    </div>
-  </div> -->
+  <table class="related-table results-table">
+    <colgroup>
+      <col span="1" style="width: 32%;">
+      <col span="1" style="width: 17%;">
+      <col span="1" style="width: 17%;">
+      <col span="1" style="width: 17%;">
+      <col span="1" style="width: 17%;">
+    </colgroup>
+    <tbody>
+      <tr class="name-row">
+        <td></td>
+        <td colspan="2" class="left-border">PPO</td>
+        <td colspan="2" class="left-border">DQN</td>
+      </tr>
+      <tr class="top-row">
+        <td>Level 0 Puzzle Set</td>
+        <td class="left-border">Train</td>
+        <td>Test</td>
+        <td class="left-border">Train</td>
+        <td>Test</td>
+      </tr>
+      <tr>
+        <td>Base</td>
+        <td class="left-border">88.5%</td>
+        <td>40.4%</td>
+        <td class="left-border">24.9%</td>
+        <td>19.5%</td>
+      </tr>
+      <tr>
+        <td>Larger Puzzle Sizes</td>
+        <td class="left-border">93.2%</td>
+        <td>71.5%</td>
+        <td class="left-border">61.2%</td>
+        <td>61.8%</td>
+      </tr>
+      <tr>
+        <td>More Walls</td>
+        <td class="left-border">77.9%</td>
+        <td>23.3%</td>
+        <td class="left-border">18.5%</td>
+        <td>13.1%</td>
+      </tr>
+      <tr>
+        <td>More Obstacles</td>
+        <td class="left-border">64.7%</td>
+        <td>21.4%</td>
+        <td class="left-border">17.6%</td>
+        <td>13.1%</td>
+      </tr>
+      <tr>
+        <td>More Shapes</td>
+        <td class="left-border">74.5%</td>
+        <td>24.2%</td>
+        <td class="left-border">23.9%</td>
+        <td>17.1%</td>
+      </tr>
+      <tr>
+        <td>Multiple Goals</td>
+        <td class="left-border">5.3%</td>
+        <td>1.1%</td>
+        <td class="left-border">0.9%</td>
+        <td>0.2%</td>
+      </tr>
+      <tr>
+        <td>All</td>
+        <td class="left-border">21.2%</td>
+        <td>5.7%</td>
+        <td class="left-border">11.4%</td>
+        <td>10.1%</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
 
 <div class="section">
   <div class="title">Next Steps</div>
