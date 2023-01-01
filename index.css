@@ -197,9 +197,48 @@ ul {
   text-align: center;
 }
 
-.classical-results {
+
+.classical-results-large, .classical-results-medium, .classical-results-small {
   width: 100%;
-  margin-top: 1.5rem;
+  margin: 1.5rem auto;
+}
+
+@media (min-width: 610px) {
+  .classical-results-large {
+    display: block;
+  }
+  .classical-results-medium {
+    display: none;
+  }
+  .classical-results-small {
+    display: none;
+  }
+}
+
+@media (min-width: 530px) and (max-width: 620px) {
+  .classical-results-large {
+    display: none;
+  }
+  .classical-results-medium {
+    display: block;
+    max-width: 550px;
+  }
+  .classical-results-small {
+    display: none;
+  }
+}
+
+@media (max-width: 530px) {
+  .classical-results-large {
+    display: none;
+  }
+  .classical-results-medium {
+    display: none;
+  }
+  .classical-results-small {
+    display: block;
+    max-width: 401px;
+  }
 }
 
 .pw-puzzle-loading {

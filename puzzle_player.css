@@ -68,8 +68,8 @@
 }
 
 /* On mobile, try to keep the puzzle player within the height of the screen. */
-@media (hover: none) and (max-height: 770px),
-    (pointer: coarse) and (max-height: 770px)  {
+@media (hover: none) and (max-height: 770px) and (min-height: 720px),
+    (pointer: coarse) and (max-height: 770px) and (min-height: 720px) {
   .pushworld_puzzles {
     height: 706px;
   }
@@ -80,8 +80,8 @@
     height: 450px;
   }
 }
-@media (hover: none) and (max-height: 720px),
-    (pointer: coarse) and (max-height: 720px)  {
+@media (hover: none) and (max-height: 720px) and (min-height: 670px),
+    (pointer: coarse) and (max-height: 720px) and (min-height: 670px) {
   .pushworld_puzzles {
     height: 656px;
   }
@@ -92,8 +92,8 @@
     height: 400px;
   }
 }
-@media (hover: none) and (max-height: 670px),
-    (pointer: coarse) and (max-height: 670px)  {
+@media (hover: none) and (max-height: 670px) and (min-height: 620px),
+    (pointer: coarse) and (max-height: 670px) and (min-height: 620px) {
   .pushworld_puzzles {
     height: 606px;
   }
@@ -104,8 +104,8 @@
     height: 350px;
   }
 }
-@media (hover: none) and (max-height: 620px),
-    (pointer: coarse) and (max-height: 620px)  {
+@media (hover: none) and (max-height: 620px) and (min-height: 570px),
+    (pointer: coarse) and (max-height: 620px) and (min-height: 570px) {
   .pushworld_puzzles {
     height: 556px;
   }
