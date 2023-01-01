@@ -24,7 +24,7 @@
 </div>
 <div id="content">
 
-<div class="section">
+<div class="section first-section">
   <div class="main-links">
     <a class="btn btn-large btn-default" href="https://arxiv.org/abs/8495.19481">
       <span class="icon icon-doc-text-inv icon-text"></span>
@@ -41,7 +41,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section first-section">
   <span class="text">
   PushWorld is a novel grid-world environment designed to test planning and reasoning
   with physical tools and movable obstacles. While recent advances in artificial intelligence have achieved human-level performance in environments like Starcraft and Go, many physical reasoning tasks remain challenging for computers. The PushWorld benchmark contains a collection of puzzles that emphasize this challenge while minimizing the complexity of physics.</span>
@@ -69,7 +69,7 @@
     </div>
 
     <div id="pw-preview-template" class="pushworld_preview">
-      <img src="images/loading.gif" class="pw-puzzle-loading" alt="Loading"/>
+      <img src="images/loading.gif" class="pw-puzzle-loading" alt="Loading" width="25px" height="25px"/>
       <canvas class="vcenter" height="138px" width="138px"></canvas>
     </div>
 
@@ -316,7 +316,7 @@
 
 <div class="section">
   <div class="title">Evaluation: Classical Planners</div>
-  We compared the following classical planning algorithms on the set of puzzles above:
+  <span class="text">We compared the following classical planning algorithms on the set of puzzles above:</span>
   <ul>
     <li><span><b>Fast Forward</b> is a seminal planning algorithm that relies on a delete relaxation heuristic.</span></li>
 
@@ -337,11 +337,11 @@
 
   The plot below shows how many puzzles each planner solves within a given time per puzzle. Novelty+RGD solves the most puzzles (69.1%) within 30 minutes per puzzle, followed by FDSS (61.4%). Notably, Novelty+RGD solves as many puzzles in 52 seconds as FDSS solves in 30 minutes.
 
-  <img class="classical-results" src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results"/>
+  <img class="classical-results" src="images/pushworld-evaluation-planner.png" alt="Classical Planning Results" width="100%"/>
 </div>
 
 <div class="section">
-  <div class="title">Evaluation: Model-Free Deep RL</div>
+  <div class="title">Evaluation: Model-Free Deep Reinforcement Learning</div>
 
   <span class="text">We selected two deep reinforcement learning (RL) algorithms to evaluate on PushWorld: <b>Deep Q-Network</b> (DQN), an off-policy, value-based algorithm, and <b>Proximal Policy Optimization</b> (PPO), an on-policy, policy-gradient algorithm. We chose these algorithms because they are widely used, easy to implement, and have shown competitive performance on diverse and challenging tasks like Atari and continuous robotic control.</span>
 
@@ -426,7 +426,7 @@
 <div class="section">
   <div class="title">Next Steps</div>
 
-  <span class="text">PushWorld presents a challenge for both classical planners and model-free RL algorithms. After playing the benchmark puzzles yourself, we hope you were able to solve >95% of the puzzles in far less than 30 minutes per puzzle, demonstrating that current artificial intelligence algorithms are not yet human-level in PushWorld. We hope you are inspired to develop new algorithms that outperform the baselines presented here, moving closer to human-level performance.</span>
+  <span class="text">PushWorld presents a challenge for both classical planners and model-free RL algorithms. After playing the benchmark puzzles yourself, we hope you were able to solve >95% of the puzzles in far less than 30 minutes per puzzle, demonstrating that current artificial intelligence algorithms are not yet human-level in PushWorld. We hope you are inspired to develop new algorithms that are closer to human-level performance.</span>
 </div>
 
 <!-- <div class="section">
