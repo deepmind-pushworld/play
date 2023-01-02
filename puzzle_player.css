@@ -205,6 +205,19 @@
   width: 100%;
 }
 
+.pw-puzzle-loading {
+  margin: 62px;
+}
+
+.pw-puzzle-list-loading {
+  margin: 80px auto;
+  display: block;
+}
+
+.pushworld_preview canvas {
+  display: none;
+}
+
 
 /* Modals */
 

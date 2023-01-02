@@ -240,11 +240,3 @@ ul {
     max-width: 401px;
   }
 }
-
-.pw-puzzle-loading {
-  margin: 62px;
-}
-
-.pushworld_preview canvas {
-  display: none;
-}

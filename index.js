@@ -578,7 +578,6 @@ var active_game = null;
 var active_preview_panel = null;
 var loaded_puzzle_groups = [];
 
-
 function load_puzzle_group(group_name) {
     if (loaded_puzzle_groups.includes(group_name)) {
         return;
@@ -594,6 +593,9 @@ function load_puzzle_group(group_name) {
         $.getJSON(
             repo_contents + "puzzles/" + preview_panel.attr("puzzle_group"),
             function(result) {
+                var prev_list = preview_panel.children(".preview_list");
+                prev_list.children(".pw-puzzle-list-loading").css("display", "none");
+
                 for (file_info of result) {
                     const name = file_info["name"].slice(0, -4);
                     const preview_div = add_puzzle_preview(preview_panel);
