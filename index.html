@@ -46,7 +46,7 @@
   PushWorld is a novel grid-world environment designed to test planning and reasoning
   with physical tools and movable obstacles. While recent advances in artificial intelligence have achieved human-level performance in environments like Starcraft and Go, many physical reasoning tasks remain challenging for computers. The PushWorld benchmark is a collection of puzzles that emphasize this challenge.</span>
 
-  <span class="text">PushWorld is available as an OpenAI Gym environment and in PDDL format in <a href="https://www.deepmind.com/">Github</a>. The environment is suitable for research in classical planning, reinforcement learning, combined task and motion planning, and cognitive science.</span>
+  <span class="text">PushWorld is available as an OpenAI Gym environment and in PDDL format in <a href="https://github.com/deepmind/pushworld">Github</a>. The environment is suitable for research in classical planning, reinforcement learning, combined task and motion planning, and cognitive science.</span>
 </div>
 
 <div class="section">
@@ -247,10 +247,10 @@
       <b>Moving Obstacles</b>: The agent must decide between finding a path around an obstacle or moving the obstacle out of the way. Some obstacles introduce choices in which freeing one path blocks another, and choices can be irreversible. Obstacles can also be "parasitic": once pushed against an object, the agent can never separate the obstacle from the object.
     </li>
     <li>
-      <b>Using Tools</b>: Sometimes to move an object into a desired position, the agent must use one or more objects as tools to indirectly push the target object: the agent pushes a tool object, which simultaneously pushes the target or another tool. In some puzzles the agent must assemble a tool by pushing multiple objects together.
+      <b>Using Tools</b>: To move an object into a desired position, the agent may need to use one or more objects as tools to indirectly push the target object: the agent pushes a tool object, which simultaneously pushes the target or another tool. In some puzzles the agent must assemble a tool by pushing multiple objects together.
     </li>
     <li>
-      <b>Prioritizing Multiple Goals</b>: Sometimes moving an object into its goal position may prevent achieving another goal. Puzzles may also require achieving multiple goals simultaneously by preemptively arranging objects and pushing them all at once.
+      <b>Prioritizing Multiple Goals</b>: Moving an object into its goal position too soon may prevent achieving another goal, and some puzzles require achieving multiple goals simultaneously by preemptively arranging objects and pushing them all at once.
     </li>
   </ul>
 
@@ -328,7 +328,7 @@
 
     <li><span><b>LAMA</b> introduced the landmark heuristic (winner of IPC 2008 sequential satisficing track).</span></li>
 
-    <li><span><b>Best-First Width Search (BFWS)</b> introduced the novelty heuristic, which prioritizes exploring states with novel combinations of variable values (winner of IPC 2018  agile track).</span></li>
+    <li><span><b>Best-First Width Search (BFWS)</b> uses the novelty heuristic, which prioritizes states that contain novel substates (winner of IPC 2018 agile track).</span></li>
 
     <li><span><b>Fast Downward Stone Soup (FDSS)</b> is a portfolio of planners (winner of IPC 2018 satisficing track).</span></li>
 
@@ -351,7 +351,7 @@
 
   <span class="text">We selected two deep reinforcement learning (RL) algorithms to evaluate on PushWorld: <b>Deep Q-Network</b> (DQN), an off-policy, value-based algorithm, and <b>Proximal Policy Optimization</b> (PPO), an on-policy, policy-gradient algorithm. We chose these algorithms because they are widely used, easy to implement, and have shown competitive performance on diverse and challenging tasks like Atari and continuous robotic control.</span>
 
-  <span class="text">We trained both algorithms on the Level 1 puzzles above for 500 million steps and measured the percentage of Level 1 puzzles they could solve. The final performance of both algorithms was equal to their performance at the start of training. We believe this is due to the low probability of solving most Level 1 puzzles with the initial random policy, resulting in sparse positive rewards and therefore insufficient signal for training.</span>
+  <span class="text">We trained both PPO and DQN on all Level 1 puzzles and measured the percentage of Level 1 puzzles they could solve. DQN converged to solving less than 1% of the puzzles, and PPO converged to solving 6% of the puzzles. We believe this low performance is in part due to the low probability of solving most Level 1 puzzles with the initial policy, resulting in sparse positive rewards.</span>
 
   <span class="text">To address the sparse reward problem, we programmatically generated a collection of Level 0 puzzle sets that are no larger than 10x10 cells. The <a href="https://arxiv.org/abs/8495.19481">PushWorld paper</a> provides details of these puzzle sets, and the table below shows the percentage of training and testing puzzles solved by PPO and DQN. Overall, PPO outperforms DQN but shows signs of overfitting.</span>
 
