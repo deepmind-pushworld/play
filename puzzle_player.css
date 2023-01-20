@@ -138,6 +138,22 @@
   overflow: hidden;
   width: 150px;
   height: 150px;
+  position: relative;
+}
+
+.pushworld_preview .puzzle-index {
+  position: absolute;
+  height: 26px;
+  background-color: rgba(240, 240, 240, 0.9);
+  color: black;
+  width: 26px;
+  font-size: 16px;
+  top: 2px;
+  left: 2px;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid #777;
 }
 
 .pushworld_preview:hover, .pushworld_preview:focus {

@@ -596,9 +596,13 @@ function load_puzzle_group(group_name) {
                 var prev_list = preview_panel.children(".preview_list");
                 prev_list.children(".pw-puzzle-list-loading").css("display", "none");
 
+                var puzzle_index = 1;
                 for (file_info of result) {
-                    const name = file_info["name"].slice(0, -4);
+                    const name = "(" + puzzle_index.toString() + ") " +
+                        file_info["name"].slice(0, -4);
                     const preview_div = add_puzzle_preview(preview_panel);
+                    preview_div.children(".puzzle-index").html(puzzle_index.toString());
+                    puzzle_index += 1;
 
                     $.ajax({
                         async: true,
