@@ -1,5 +1,5 @@
 // Github settings
-github_repo = "deepmind-pushworld/play"
+github_repo = "deepmind/pushworld"
 file_source = "https://raw.githubusercontent.com/" + github_repo + "/main/"
 repo_contents = "https://api.github.com/repos/" + github_repo + "/contents/"
 
@@ -591,7 +591,7 @@ function load_puzzle_group(group_name) {
         }
 
         $.getJSON(
-            repo_contents + "puzzles/" + preview_panel.attr("puzzle_group"),
+            repo_contents + "benchmark/puzzles/" + preview_panel.attr("puzzle_group"),
             function(result) {
                 var prev_list = preview_panel.children(".preview_list");
                 prev_list.children(".pw-puzzle-list-loading").css("display", "none");

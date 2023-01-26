@@ -7,5 +7,6 @@ About DeepMind PushWorld and this repository.
 - PushWorld is a benchmark for planning with physical tools and obstacles.
 - PushWorld is released as an open source project by DeepMind at [https://github.com/deepmind/pushworld](https://github.com/deepmind/pushworld).
 - For any questions, please contact [pushworld@deepmind.com](mailto:pushworld@deepmind.com).
+- Technical paper: https://arxiv.org/abs/2301.10289
 
-Copyright © 2022 DeepMind Technologies Ltd.
+Copyright © 2023 DeepMind Technologies Ltd.
